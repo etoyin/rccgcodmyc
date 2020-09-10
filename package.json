@@ -1,7 +1,7 @@
 {
-  "name": "speech2textapp",
+  "name": "rccgcodmyc",
   "version": "1.0.0",
-  "description": "An app that is meant to convert speech to readable text and save to a database",
+  "description": "A site for members info",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
