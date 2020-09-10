@@ -25,6 +25,8 @@ module.exports = {
     //console.log(req.body);
     //console.log(req.file);
     const file = req.file;
+    console.log(file);
+    console.log(req.body);
     if(file.mimetype == "image/jpeg"||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
 
       create(req, (error, results) => {

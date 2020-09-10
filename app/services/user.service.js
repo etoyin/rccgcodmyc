@@ -28,8 +28,8 @@ module.exports = {
       ordination,
       position
     } = req.body;
-    const dString = departments.join(", ");
-    const tString = training.join(", ");
+    //const dString = departments.join(", ");
+   // const tString = training.join(", ");
 
 
     const file = req.file;
@@ -73,8 +73,8 @@ module.exports = {
           year_joined_rccg,
           other_comments,
           file.filename,
-          dString,
-          tString,
+          departments,
+          training,
           ordination,
           position
         ],

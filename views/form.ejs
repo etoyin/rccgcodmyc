@@ -3,22 +3,27 @@
     <% if (message != '') { %>
       <p class="text-center text-danger"><%= message %></p>
     <% } %>
-    <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+    <form style="padding-top: 20px;" class="add-player-form" action="" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col-md-4">
+          <p class="error nameError"></p>
           <input type="text" class="form-control" name="name" placeholder="Full Name" required>
         </div>
         <div class="form-group col-md-4">
+          <p class="error addressError"></p>
           <input type="text" class="form-control" name="address" placeholder="Address" required>
         </div>
         <div class="form-group col-md-4">
+          <p class="error numberError"></p>
           <input type="number" class="form-control" name="number" placeholder="WhatsApp Phone Number" required>
         </div>
         <div class="form-group col-md-4">
-          <input type="text" class="form-control" name="email" placeholder="Email" required>
+          <p class="error emailError"></p>
+          <input type="email" class="form-control" name="email" placeholder="Email" required>
         </div>
 
         <div class="form-group col-md-4">
+          <p class="error dobError"></p>
           <input 
             onfocus="(this.type='date')" 
             onblur="(this.type='text')"
@@ -30,6 +35,7 @@
         <!-----------------Gender------------------->
         
         <div class="form-group col-md-4">
+          <p class="error genderError"></p>
           <select type="text" class="form-control" name="gender" required>
             <option value="">Gender</option>
             <option value="male">Male</option>
@@ -40,6 +46,7 @@
         <!-----------------Marital Status------------------->
 
         <div class="form-group col-md-4">
+          <p class="error maritalError"></p>
           <select type="text" class="form-control" name="marital_status" required>
             <option value="">Marital Status</option>
             <option value="single">Single</option>
@@ -50,6 +57,7 @@
         </div>
         
         <div class="form-group col-md-4">
+          <p class="error educationError"></p>
           <select type="text" class="form-control" name="education" required>
             <option value="">Select Education Qualification</option>
             <option value="phd">PhD</option>
@@ -64,6 +72,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <p class="error baptismError"></p>
           <select type="text" class="form-control" name="water_baptism" required>
             <option value="">Water Baptism</option>
             <option value="yes">Yes</option>
@@ -72,97 +81,98 @@
         </div>
 
         <!-----------------Church Training----------------------->
+        <p class="error trainingError"></p>
         <ul style="padding-left: 40px" class="training form-group col-md-4">
           <label class="label">Church Training Obtained</label>
           <li class="">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="believer">Believer's Class
+              <input type="checkbox" class="form-check-input" value="Believer's Class">Believer's Class
             </label>
           </li>
           <li class="">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="baptismal">Baptismal Class
+              <input type="checkbox" class="form-check-input" value="Baptismal Class">Baptismal Class
             </label>
           </li>
           <li class="">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="workers">Workers-in-trainin
+              <input type="checkbox" class="form-check-input" value="Workers-in-training">Workers-in-trainin
             </label>
           </li>
           <li class="">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="sod">School of Disciples
+              <input type="checkbox" class="form-check-input" value="School of Disciples">School of Disciples
             </label>
           </li>
           <li class="">
             <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="bible_college">Bible College
+              <input type="checkbox" class="form-check-input" value="Bible College">Bible College
             </label>
           </li>
         </ul>
 
         <!-----------------Departments----------------------->
-        <div class="departments">
-          <div style="padding-left: 40px" class="form-group col-md-4">
-            <label class="label">Department(s)</label>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="technical">Technical
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="sanitation">Sanitation
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="Drama">Drama
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="choir">Choir
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="sunday_school">Sunday School
-              </label>
-            </div>
+        <p class="error departmentError"></p>
+        <div style="padding-left: 40px" class="form-group departments col-md-4">
+          <label class="label">Department(s)</label>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Technical">Technical
+            </label>
           </div>
-          <div style="padding-left: 40px" class="form-group col-md-4">
-            <label style="visibility: hidden;"></label>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="protocol">Protocol
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="usering">Usering
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="media">Media
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="prayer">Prayer
-              </label>
-            </div>
-            <div class="">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="sign_language">Sign Language
-              </label>
-            </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Sanitation">Sanitation
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Drama">Drama
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Choir">Choir
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Sunday School">Sunday School
+            </label>
+          </div>
+        </div>
+        <div style="padding-left: 40px" class="form-group departments col-md-4">
+          <label style="visibility: hidden;"></label>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Protocol">Protocol
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Usering">Usering
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Media">Media
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Prayer">Prayer
+            </label>
+          </div>
+          <div class="">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="Sign Language">Sign Language
+            </label>
           </div>
         </div>
 
         <div class="form-group col-md-4">
-          <select type="text" class="form-control" name="water_baptism" required>
+          <p class="error ordinationStatusError"></p>
+          <select type="text" class="form-control" name="ordination" required>
             <option value="">Ordination Status</option>
             <option value="deacon">Deacon</option>
             <option value="asst_pastor">Assistant Pastor</option>
@@ -171,6 +181,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <p class="error oridinationYearError"></p>
           <input 
             type="number"
             max="2020"
@@ -181,6 +192,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <p class="error workerYearError"></p>
           <input 
             type="number"
             max="2020"
@@ -191,6 +203,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <p class="error rccgYearError"></p>
           <input 
             type="number"
             max="2020"
@@ -201,7 +214,8 @@
         </div>
 
         <div class="form-group col-md-4">
-          <select type="text" class="form-control" name="dob" required>
+          <p class="error positionError"></p>
+          <select type="text" class="form-control" name="position" required>
             <option value="">Current Position in Church</option>
             <option value="worker">Worker</option>
             <option value="hod">HOD</option>
@@ -215,6 +229,7 @@
       </div>
       <div class="form-row">
         <div class="col-md-6">
+          <p class="error imageError"></p>
           <label for="player-img"><b>Upload photo</b></label><br>
           <input type="file" name="image" id="player-img" class="" required>
         </div>
