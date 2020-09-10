@@ -77,7 +77,7 @@ module.exports = {
     getUsers( (error, results) => {
       if(error){
         console.log(error);
-        res.redirect('/')
+        //res.redirect('/')
       }
       if(!results){
         message = 'No record found';
