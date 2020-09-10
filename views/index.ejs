@@ -1,0 +1,80 @@
+<%- include ('partials/header.ejs'); %>
+  <% console.log(data)%>
+  <div class="home_bg">
+    <div class="worship_text">
+      <h2>......worship Him in spirit and in truth.</h3>
+      <h3>John 4:24</h4>  
+    </div>    
+  </div>
+  <div>
+    <div>
+      <% data.filter((data) => {
+        return data.position == 'picp'
+      }).forEach((x, i) => {%>
+        <div>
+          <img src='/public/images/uploaded/<%x.image_name%>' class="rounded-circle" />
+          <h5>Pastor <%x.name%></h5>
+          <h5>Pastor in Charge of Province</h5>
+        </div>
+      <%})%>
+    </div>
+    <div class="flex-container">
+      <% data.filter((data) => {
+        return data.position == 'pastor'
+      }).forEach((x, i) => {%>
+        <div class="hod_div">
+          <a href='/profile/<%=x.id%>'>
+            <img src='/images/uploaded/<%=x.image_name%>' class="hod_img rounded-circle" />
+            <h5><%= "Pastor " + x.name %></h5>
+            <h6>Pastor</h6>
+          </a>
+        </div>
+      <%})%>
+    </div>
+    <div class="flex-container">
+      <% data.filter((data) => {
+        return data.position == 'minister'
+      }).forEach((x, i) => {%>
+        <div class="hod_div">
+          <a href='/profile/<%=x.id%>'>
+            <img src='/images/uploaded/<%=x.image_name%>' class="hod_img rounded-circle" />
+            <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+            <h6>Minister</h6>
+          </a>
+        </div>
+      <%})%>
+    </div>
+    <div class="flex-container">
+      <% data.filter((data) => {
+        return data.position == 'hod'
+      }).forEach((x, i) => {%>
+        <div class="hod_div">
+          <a href='/profile/<%=x.id%>'>
+            <img src='/images/uploaded/<%=x.image_name%>' class="hod_img rounded-circle" />
+            <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+            <h6>Head of Department</h6>
+          </a>
+        </div>
+      <%})%>
+    </div>
+    <div class="flex-container">
+      <% data.filter((data) => {
+        return data.name == 'toyin'
+      }).forEach((x, i) => {%>
+        <div class="hod_div">
+          <a href='/profile/<%=x.id%>'>
+            <img src='/images/uploaded/<%=x.image_name%>' class="hod_img  rounded-circle" />
+            <h5><%= (x.gender === 'male' ? 'Bro. Samuel': 'Sis. '+ x.name)%></h5>
+            <h6>Minister</h6>
+          </a>
+        </div>
+      <%})%>
+    </div>
+    <%data.forEach((member, i) => {%>
+
+    <%})%>
+  </div>
+  </div> 
+</div>
+</body>
+</html>

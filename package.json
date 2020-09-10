@@ -1,0 +1,33 @@
+{
+  "name": "speech2textapp",
+  "version": "1.0.0",
+  "description": "An app that is meant to convert speech to readable text and save to a database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "speech",
+    "converter",
+    "nodejs",
+    "express",
+    "mongodb",
+    "restApi"
+  ],
+  "author": "Adesina Oluwatoyin",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.25",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4"
+  }
+}
