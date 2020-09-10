@@ -79,13 +79,13 @@ module.exports = {
         console.log(error);
         //res.redirect('/')
       }
-      if(!results){
+      /*if(!results){
         message = 'No record found';
         res.render('index.ejs', {
           title: 'RCCGCODMYC | View Ministers',
           message: message,
         });
-      }
+      }*/
       //console.log(results)
       res.render('index.ejs', {
         title: 'RCCGCODMYC | View Ministers',
