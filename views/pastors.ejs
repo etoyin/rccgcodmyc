@@ -13,7 +13,7 @@
       }).forEach((x, i) => {%>
         <div>
           <a href='/profile/<%=x.id%>'>
-            <img src='/public/images/uploaded/<%x.image_name%>' class="rounded-circle" />
+            <img src='/images/uploaded/<%x.image_name%>' class="rounded-circle" />
             <h5><%= (x.gender === 'male' ? 'Pastor. '+ x.name : 'Pastor(Mrs). '+ x.name)%></h5>
             <h6><%= (x.gender === 'male' ? 'Pastor-In-Charge-of-Provice' : 'Wife of the PICP')%></h6>
           </a>
