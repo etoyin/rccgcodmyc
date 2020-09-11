@@ -1,5 +1,5 @@
 <%- include ('partials/header.ejs'); %>
-  <% console.log(data)%>
+  <% %>
   <div>
     <div class="flex-container">
       <% data.filter((data) => {
@@ -10,10 +10,10 @@
         let comp = 0;
         comp = (aG > bG ? -1 : 1);
         return comp
-      }).forEach((x, i) => {%>
+      }).forEach((x, i) => { console.log(x)%>
         <div>
           <a href='/profile/<%=x.id%>'>
-            <img src='/images/uploaded/<%x.image_name%>' class="rounded-circle" />
+            <img src='/images/uploaded/<=%x.image_name%>' class="rounded-circle" />
             <h5><%= (x.gender === 'male' ? 'Pastor. '+ x.name : 'Pastor(Mrs). '+ x.name)%></h5>
             <h6><%= (x.gender === 'male' ? 'Pastor-In-Charge-of-Provice' : 'Wife of the PICP')%></h6>
           </a>
