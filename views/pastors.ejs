@@ -1,9 +1,9 @@
 <%- include ('partials/header.ejs'); %>
-  <% %>
+  <% console.log(data)%>
   <div>
     <div class="flex-container">
       <% data.filter((data) => {
-        return data.position.search(/abioye/i) >= 0 
+        return data.name.search(/abioye/i) >= 0 
       }).sort((a, b) => {
         let aG = a.gender.toUpperCase();
         let bG = b.gender.toUpperCase();

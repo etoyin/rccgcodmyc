@@ -86,7 +86,7 @@ module.exports = {
       let data = results.filter((data) => {
         return data.position == 'Pastorate';
       })
-      console.log(data);
+      
       res.render('pastors.ejs', {
         title: 'The Pastorate',
         data,
