@@ -1,8 +1,8 @@
 <%- include ('partials/header.ejs'); %>
-  <% %>
-  <% if(message == 'Good'){  %>
+  <% console.log(data) %>
+  <% if(data.length > 0){  %>
     <div>
-      <h2 id='department_header' class="text-center"></h2>
+      <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
       <div class="flex-container">
         <% data.filter((data) => {
           return data.position == 'HOD'; 
@@ -10,7 +10,9 @@
           <div>
             <a href='/profile/<%=x.id%>'>
               <img src='/images/uploaded/<%=x.image_name%>' class="picp_img rounded-circle" />
-              <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              <h5>
+                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              </h5>
               <h6 id='hod_caption'></h6>
             </a>
           </div>
@@ -24,15 +26,21 @@
           <div>
             <a href='/profile/<%=x.id%>'>
               <img src='/images/uploaded/<%=x.image_name%>' class="pastor_img rounded-circle" />
-              <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              <h5>
+                <%= 
+                  (x.gender === 'male' ? 
+                  ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
+                  ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
+                %>
+              </h5>
             </a>
           </div>
         <%})%>
       </div>
     </div>
   <%} else {%>
-    <h2 id='department_header' class="text-center"></h2>
-    <h3><%=message%></h3>
+    <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
+    <h3 class="text-center">No Records found!</h3>
   <%}%>
 </div> 
 </div>
