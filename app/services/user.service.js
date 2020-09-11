@@ -52,8 +52,8 @@ module.exports = {
           year_joined_rccg,
           other_comments,
           image_name,
-          training,
           departments,
+          training,
           ordination,
           position
         )

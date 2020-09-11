@@ -1,0 +1,40 @@
+<%- include ('partials/header.ejs'); %>
+  <% %>
+  <% if(message == 'Good'){  %>
+    <div>
+      <h2 id='department_header' class="text-center"></h2>
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.position == 'HOD'; 
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='/images/uploaded/<%=x.image_name%>' class="picp_img rounded-circle" />
+              <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              <h6 id='hod_caption'></h6>
+            </a>
+          </div>
+        <%})%>
+      </div>
+
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.position != 'HOD'; 
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='/images/uploaded/<%=x.image_name%>' class="pastor_img rounded-circle" />
+              <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+            </a>
+          </div>
+        <%})%>
+      </div>
+    </div>
+  <%} else {%>
+    <h2 id='department_header' class="text-center"></h2>
+    <h3><%=message%></h3>
+  <%}%>
+</div> 
+</div>
+</body>
+</html>

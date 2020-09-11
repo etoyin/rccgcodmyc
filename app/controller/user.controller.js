@@ -71,6 +71,36 @@ module.exports = {
       });
     });
   },
+  getEachDepartment: (req, res) => {
+    let department = req.query.department;
+    console.log(department);
+    getUsers((error, results) => {
+      if(error){
+        console.log(error);
+      }
+      
+      let data = results.filter((data) => {
+        let departm = new RegExp(department,"i");
+        return data.departments.search(departm) >= 0
+      })
+      console.log(data)
+      if(!data){
+        message = 'No record found';
+        res.render('departments.ejs', {
+          title: department.toUpperCase() + 'department',
+          message: message,
+          data,
+        });
+      }
+
+      res.render('departments.ejs', {
+        title: department.toUpperCase() + 'department',
+        data,
+        message: 'Good'
+      });
+
+    })
+  },
   getPastors: (req, res) => {
     getUsers((error, results) => {
       if(error){

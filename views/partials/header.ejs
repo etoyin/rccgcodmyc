@@ -7,32 +7,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+  <link href="https://fonts.googleapis.com/css2?family=Kufam&display=swap" rel="stylesheet">
 <!-- JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <!--<link rel="stylesheet" href="/assets/css/custom.css">-->
 <script src="/scripts/forms.js"></script>  
+<script src="/scripts/departments.js"></script>  
 <script src="/scripts/jquery.js"></script>  
 <title><%= title %></title>
 </head>
 <style>
   body, html {
     height: 100%;
+    font-family: 'Kufam', cursive;
   }
   
 
   .worship_text{
-    position: absolute;
-    top: 70%;
-    left: 25%;
-    color: rgb(149, 175, 247);
+    position: relative;
+    top: 40%;
+    color: rgb(216, 221, 236);
   }
   .home_bg {
     font-style: italic;
     padding-top: 20px;
-    background-image: url('/images/display_img/Church-2.jpg');
+    background-image: url('/images/display_img/church.jpg');
     opacity: 0.8;
     width: 100%;
     height: 500px;
@@ -52,6 +53,9 @@
     margin: 10px;
     text-align: center;
     line-height: 75px;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 20px;
     
   }
   .error{
@@ -82,7 +86,7 @@
 <div class="page-wrapper">
   <header class="">
     <div class='text-center'>
-      <image width='100px' height='100px' src='/images/display_img/logo.jpeg'/>
+      <image width='100px' height='100px' src='/images/display_img/logo.jpg'/>
     </div>
     <hr size="10" width="70%" align="center" />
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -99,7 +103,7 @@
             <a class="nav-link" href="/register">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/non_workers">Non Workers</a>
+            <a class="nav-link" href="#">Non Workers</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,17 +111,17 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/pastors">The Pastorate</a>
-              <a class="dropdown-item" href="/choir">Choir</a>
-              <a class="dropdown-item" href="/media">Media</a>
-              <a class="dropdown-item" href="/sunday_school">Sunday School</a>
-              <a class="dropdown-item" href="/drama">Drama</a>
-              <a class="dropdown-item" href="/technical">Technical</a>
-              <a class="dropdown-item" href="/protocol">Protocol</a>
-              <a class="dropdown-item" href="/sanitation">Sanitation</a>
-              <a class="dropdown-item" href="/security">Security</a>
-              <a class="dropdown-item" href="/prayer">Prayer</a>
-              <a class="dropdown-item" href="/usering">Usering</a>
-              <a class="dropdown-item" href="/sign_lang">Sign Language</a>
+              <a class="dropdown-item" href="/departments?department=choir">Choir</a>
+              <a class="dropdown-item" href="/departments?department=media">Media</a>
+              <a class="dropdown-item" href="/departments?department=sunday">Sunday School</a>
+              <a class="dropdown-item" href="/departments?department=drama">Drama</a>
+              <a class="dropdown-item" href="/departments?department=technical">Technical</a>
+              <a class="dropdown-item" href="/departments?department=protocol">Protocol</a>
+              <a class="dropdown-item" href="/departments?department=sanitation">Sanitation</a>
+              <a class="dropdown-item" href="/departments?department=security">Security</a>
+              <a class="dropdown-item" href="/departments?department=prayer">Prayer</a>
+              <a class="dropdown-item" href="/departments?department=user">Usering</a>
+              <a class="dropdown-item" href="/departments?department=sign">Sign Language</a>
             </div>
           </li>
         </ul>

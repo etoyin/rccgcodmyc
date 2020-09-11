@@ -1,12 +1,13 @@
 <%- include ('partials/header.ejs'); %>
   <% console.log(data)%>
   <div class="home_bg">
-    <div class="worship_text">
+    <div class="text-center worship_text">
       <h2>......worship Him in spirit and in truth.</h3>
       <h3>John 4:24</h4>  
     </div>    
   </div>
   <div>
+    <h3 style="padding: 20px;" class="text-center">The Ministers</h3>
     <div class="flex-container">
       <% data.filter((data) => {
         return data.name.search(/abioye/i) >= 0 
@@ -18,7 +19,7 @@
         return comp
       }).forEach((x, i) => { console.log(x)%>
         <div>
-          <a href='/profile/<%=x.id%>'>
+          <a href=''>
             <img src='/images/uploaded/<%=x.image_name%>' class="picp_img rounded-circle" />
             <h5><%= (x.gender === 'male' ? 'Pastor. '+ x.name : 'Pastor(Mrs). '+ x.name)%></h5>
             <h6><%= (x.gender === 'male' ? 'Pastor-In-Charge-of-Provice' : 'Wife of the PICP')%></h6>
@@ -39,10 +40,10 @@
     </div>
     <div class="flex-container">
       <% data.filter((data) => {
-        return data.position == 'minister'
+        return data.position == 'Minister'
       }).forEach((x, i) => {%>
         <div class="hod_div">
-          <a href='/profile/<%=x.id%>'>
+          <a href=''>
             <img src='/images/uploaded/<%=x.image_name%>' class="hod_img rounded-circle" />
             <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
             <h6>Minister</h6>
@@ -52,10 +53,10 @@
     </div>
     <div class="flex-container">
       <% data.filter((data) => {
-        return data.position == 'hod'
+        return data.position == 'HOD'
       }).forEach((x, i) => {%>
         <div class="hod_div">
-          <a href='/profile/<%=x.id%>'>
+          <a href=''>
             <img src='/images/uploaded/<%=x.image_name%>' class="hod_img rounded-circle" />
             <h5><%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
             <h6>Head of Department</h6>
@@ -68,7 +69,7 @@
         return data.name == 'toyin'
       }).forEach((x, i) => {%>
         <div class="hod_div">
-          <a href='/profile/<%=x.id%>'>
+          <a href=''>
             <img src='/images/uploaded/<%=x.image_name%>' class="hod_img  rounded-circle" />
             <h5><%= (x.gender === 'male' ? 'Bro. Samuel': 'Sis. '+ x.name)%></h5>
             <h6>Minister</h6>
@@ -76,9 +77,6 @@
         </div>
       <%})%>
     </div>
-    <%data.forEach((member, i) => {%>
-
-    <%})%>
   </div>
   </div> 
 </div>

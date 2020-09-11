@@ -183,11 +183,15 @@ $(document).ready(() => {
       .then(result => {
         console.log('Success:', result);
         if(result.success == 1){
-          alert('Data sent succesfully');
-          setTimeout(pageRedirect(), 3000);
+          $('.alert').removeClass('alert-danger');
+          $('.alert').addClass('alert-success');
+          $('.alert').append('<strong>Success!</strong> Data sent successfully');
+          setTimeout(pageRedirect(), 5000);
         }
         else{
-          alert('Not succesfull, Try again');
+          $('.alert').removeClass('alert-success');
+          $('.alert').addClass('alert-danger');
+          $('.alert').append('<strong>Danger!</strong> Not succesful, You might have used the email before. Try again with another!');
         }
       })
       .catch(error => {

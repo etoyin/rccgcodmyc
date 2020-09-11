@@ -7,7 +7,8 @@ const {
   getUserById,
   getHomePage,
   getForms,
-  getPastors
+  getPastors,
+  getEachDepartment
   /*updateUser,
   deleteUser,
   login*/
@@ -19,6 +20,7 @@ router.get("/", getHomePage);
 router.post("/register", upload.single('uploaded_img'), createUser);
 router.get("/register", getForms);
 router.get("/pastors", getPastors);
+router.get("/departments", getEachDepartment);
 //router.get("/register", getForms);
 //router.get("/register", getForms);
 //router.get("/register", getForms);

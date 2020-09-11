@@ -11,7 +11,7 @@
         let comp = 0;
         comp = (aG > bG ? -1 : 1);
         return comp
-      }).forEach((x, i) => { console.log(x)%>
+      }).forEach((x, i) => {%>
         <div>
           <a href='/profile/<%=x.id%>'>
             <img src='/images/uploaded/<%=x.image_name%>' class="picp_img rounded-circle" />
@@ -25,7 +25,7 @@
     <div class="flex-container">
       <% data.filter((data) => {
         return data.name.search(/abioye/i) < 0 
-      }).forEach((x, i) => { console.log(x)%>
+      }).forEach((x, i) => {%>
         <div>
           <a href='/profile/<%=x.id%>'>
             <img src='/images/uploaded/<%=x.image_name%>' class="pastor_img rounded-circle" />
