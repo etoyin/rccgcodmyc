@@ -71,6 +71,30 @@ module.exports = {
       });
     });
   },
+  getPastors: (req, res) => {
+    getUsers((error, results) => {
+      if(error){
+        console.log(error);
+      }
+      if(!results){
+        message = 'No record found';
+        res.render('pastors.ejs', {
+          title: 'The Pastorate',
+          message: message,
+        });
+      }
+      let data = results.filter((data) => {
+        return data.position = 'Pastorate';
+      })
+      console.log(data);
+      res.render('pastors.ejs', {
+        title: 'The Pastorate',
+        data,
+        message: 'Good'
+      });
+
+    })
+  },
   getHomePage: (req, res) => {
     //const id = req.params.id;
     let message = '';

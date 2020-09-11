@@ -7,6 +7,7 @@ const {
   getUserById,
   getHomePage,
   getForms,
+  getPastors
   /*updateUser,
   deleteUser,
   login*/
@@ -17,6 +18,12 @@ const router = require("express").Router();
 router.get("/", getHomePage);
 router.post("/register", upload.single('uploaded_img'), createUser);
 router.get("/register", getForms);
+router.get("/pastors", getPastors);
+//router.get("/register", getForms);
+//router.get("/register", getForms);
+//router.get("/register", getForms);
+//router.get("/register", getForms);
+//router.get("/register", getForms);
 //router.get("/all", getUsers);
 //router.get("/:id", getUserById);
 //router.patch("/update", checkToken, updateUser);
