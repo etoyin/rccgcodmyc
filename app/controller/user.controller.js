@@ -22,11 +22,7 @@ module.exports = {
     //const body = req.body;
     //const salt = genSaltSync(10);
     //body.password = hashSync(body.password, salt);
-    //console.log(req.body);
-    //console.log(req.file);
     const file = req.file;
-    console.log(file);
-    console.log(req.body);
     if(file.mimetype == "image/jpeg"||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
 
       create(req, (error, results) => {
@@ -65,15 +61,15 @@ module.exports = {
           message: "Record not found"
         });
       }
-      return res.json({
-        success: 1,
-        data: results
+      res.render('profile.ejs', {
+        title: results[0].name,
+        data: results,
+        message: 'Good'
       });
     });
   },
   getEachDepartment: (req, res) => {
     let department = req.query.department;
-    console.log(department);
     getUsers((error, results) => {
       if(error){
         console.log(error);
@@ -83,7 +79,7 @@ module.exports = {
         let departm = new RegExp(department,"i");
         return data.departments.search(departm) >= 0
       })
-      console.log(data)
+
       if(!data){
         message = 'No record found';
         res.render('departments.ejs', {

@@ -1,0 +1,83 @@
+<%- include ('partials/header.ejs'); %>
+  <% let x = data[0]; %>
+  <div>
+    <h3 style="padding-top: 20px;" class="text-center">
+      <%= 
+        (x.gender === 'male' ? 
+        ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
+        ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
+      %>
+    </h3>
+    <div class="">
+      <div class="text-center">
+        <img src='/images/uploaded/<%=x.image_name%>' class="profile_img rounded-circle img-responsive" />
+        <h5></h5>
+      </div>
+      <div class="table-div">
+        <table>
+          <tbody>
+            <tr>
+              <td class="table_label"><b>Name: </b></td>
+              <td class=""><%=x.name%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Email: </b></td>
+              <td class=""><%=x.email%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Date of Birth: </b></td>
+              <td class=""><%=x.dob%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Marital Status: </b></td>
+              <td class=""><%=x.marital_status%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Highest Qualification: </b></td>
+              <td class=""><%=x.education%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Baptized By Immersion?: </b></td>
+              <td class=""><%=x.water_baptism%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Year Joined RCCG: </b></td>
+              <td class=""><%=x.year_joined_rccg%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Year Became a Worker: </b></td>
+              <td class=""><%=x.year_became_worker%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Year Ordained Last: </b></td>
+              <td class=""><%=x.last_ordained_year%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Current Ordination: </b></td>
+              <td class=""><%=x.ordination%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Department(s): </b></td>
+              <td class=""><%=x.departments.split(",").join(", ")%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Training(s) received in RCCG: </b></td>
+              <td class=""><%=x.training.split(",").join(", ")%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Position in Church: </b></td>
+              <td class=""><%=x.position%></td>
+            </tr>
+            <tr>
+              <td class="table_label"><b>Other Information: </b></td>
+              <td class=""><%=x.other_comments%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div> 
+</div>
+</body>
+</html>
