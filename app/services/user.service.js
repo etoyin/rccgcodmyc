@@ -8,7 +8,7 @@ const captilize = (str) => {
 }
 
 module.exports = {
-  create: (req, callback) => {
+  create: (req, fileName, callback) => {
     const {
       name, 
       address, 
@@ -32,9 +32,9 @@ module.exports = {
    // const tString = training.join(", ");
 
 
-    const file = req.file;
+    //const file = req.file;
     //console.log(req.body);
-    console.log(file);
+    //console.log(file);
     pool.query(
       `insert into user
         (
@@ -72,7 +72,7 @@ module.exports = {
           year_became_worker,
           year_joined_rccg,
           other_comments,
-          file.filename,
+          fileName,
           departments,
           training,
           ordination,

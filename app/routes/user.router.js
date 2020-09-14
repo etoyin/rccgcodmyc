@@ -1,5 +1,5 @@
 const multer  = require('multer');
-const upload = multer({ dest: 'public/images/uploaded' })
+const upload = multer({ dest: 'uploads/' })
 //const {getHomePage} = require('./index')
 
 const { 

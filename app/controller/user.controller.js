@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { 
   create,
   getUsers,
@@ -23,20 +24,28 @@ module.exports = {
     //const salt = genSaltSync(10);
     //body.password = hashSync(body.password, salt);
     const file = req.file;
+    const fileName = (new Date).valueOf() + "-" + file.originalname;
+    console.log(fileName);
+    //console.log(req.body);
     if(file.mimetype == "image/jpeg"||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
 
-      create(req, (error, results) => {
-        if(error){
-          console.log(error);
-          return res.status(500).json({
-            success: 0,
-            message: "Database connection error"
-          });
-        }
-        return res.status(200).json({
-          success: 1,
-          data: results
+      fs.rename(file.path, 'public/images/uploaded/' + fileName, (error) => {
+        if (error) throw error;
+        
+        create(req, fileName, (error, results) => {
+          if(error){
+            console.log(error);
+            return res.status(500).json({
+              success: 0,
+              message: "Database connection error"
+            });
+          }
+          return res.status(200).json({
+            success: 1,
+            data: results
+          })
         })
+
       })
     }else{
       return res.status(500).json({

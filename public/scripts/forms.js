@@ -137,6 +137,8 @@ $(document).ready(() => {
     let imageError = (validateImage) ? '': 'Upload an image with size not more than 1mb';
     $('.imageError').text(imageError);
 
+ 
+
     let formValidate = validateAddress && validateDob &&
                     validateDepartment && validateEducation &&
                     validateEmail && validateGender &&
