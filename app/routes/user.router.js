@@ -1,7 +1,5 @@
-const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' })
 //const {getHomePage} = require('./index')
-
+const upload = require('../multer');
 const { 
   createUser,
   getUserById,

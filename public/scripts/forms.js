@@ -19,7 +19,7 @@ $(document).ready(() => {
 
   let image = '';
   $('input[name="image"]').change(function(){
-    if(this.files[0].size <= 1000000){
+    if(this.files[0].size <= 500000){
      image = $('input[name="image"]')[0].files[0];
     }
     else{
@@ -134,7 +134,7 @@ $(document).ready(() => {
     $('.rccgYearError').text(errorMessagesRccgYear);
 
     let validateImage = image !== '';
-    let imageError = (validateImage) ? '': 'Upload an image with size not more than 1mb';
+    let imageError = (validateImage) ? '': 'Upload an image with size not more than 500kb';
     $('.imageError').text(imageError);
 
  

@@ -8,7 +8,7 @@ const captilize = (str) => {
 }
 
 module.exports = {
-  create: (req, fileName, callback) => {
+  create: (req, newPath, callback) => {
     const {
       name, 
       address, 
@@ -72,7 +72,7 @@ module.exports = {
           year_became_worker,
           year_joined_rccg,
           other_comments,
-          fileName,
+          newPath,
           departments,
           training,
           ordination,

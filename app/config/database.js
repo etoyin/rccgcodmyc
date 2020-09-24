@@ -1,12 +1,13 @@
 const { createPool } = require("mysql");
+require("dotenv").config();
 
-//let proEnv = process.env;
+let proEnv = process.env;
 const pool = createPool({
-  port: 3306,
-  host: 'sql7.freemysqlhosting.net',
-  user: 'sql7364401',
-  password: 'VEfAew6QHe',
-  database: 'sql7364401'
+  port: proEnv.DB_PORT,
+  host: proEnv.DB_HOST,
+  user: proEnv.DB_USER,
+  password: proEnv.DB_PASSWORD,
+  database: proEnv.MYSQL_DB
 })
 
 module.exports = pool;
