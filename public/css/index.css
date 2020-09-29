@@ -1,0 +1,144 @@
+body, html {
+  height: 100%;
+  font-family: 'Kufam', cursive;
+}
+nav{
+  border-bottom: 1px solid #999;
+  border-top: 1px solid #999;
+}
+
+
+.worship_text{
+  position: relative;
+  top: 40%;
+  color: rgb(216, 221, 236);
+}
+.home_bg {
+  font-style: italic;
+  padding-top: 20px;
+  background-image: url('/images/display_img/church.jpg');
+  opacity: 0.8;
+  width: 100%;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+.flex-container > div{
+  background-color: #f1f1f1;
+  width: 250px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 20px;
+  
+}
+.error{
+  color: red;
+  font-size: 10px;
+}
+.label{
+  font-weight: bold;
+}
+a:link, a:visited{
+  text-decoration: none;
+  color: #444;
+}
+.picp_img{
+  height: 200px;
+  width: 200px;
+}
+.profile_img{
+  height: 300px;
+  width: 300px;
+}
+.pastor_img{
+  height: 170px;
+  width: 170px;
+}
+.hod_img {
+  height: 150px;
+  width: 150px;
+}
+.table-div{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+tr > td {
+  padding: 15px;
+}
+table{
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+  width: 50%;
+}
+tr{
+  width: 100%;
+}
+tr:nth-child(even) {
+  background: #777; 
+  color: white; 
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  table{
+    width: 100%
+  }
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr, caption { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .table-div{
+    width: 100%;
+  }
+  
+  tr { 
+    border: 1px solid #ccc; 
+    width: 100%;
+  }
+  
+  td { 
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+    width: 100;
+  }
+  
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }    
+}

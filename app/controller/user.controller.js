@@ -13,8 +13,16 @@ const {
 //const { sign } = require("jsonwebtoken");
 
 module.exports = {
+  getLoginForm: (req, res) => {
+    let message = '';
+    res.render('login.ejs', {
+      title: 'RCCGCODMYC | Administrator Login',
+      message: message,
+      data: ''
+    });
+  },
   getForms: (req, res) => {
-    let message = ''
+    let message = '';
     res.render('form.ejs', {
       title: 'RCCGCODMYC | View Ministers',
       message: message,
