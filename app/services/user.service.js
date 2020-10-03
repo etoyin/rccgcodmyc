@@ -28,13 +28,6 @@ module.exports = {
       ordination,
       position
     } = req.body;
-    //const dString = departments.join(", ");
-   // const tString = training.join(", ");
-
-
-    //const file = req.file;
-    //console.log(req.body);
-    //console.log(file);
     pool.query(
       `insert into user
         (
@@ -89,6 +82,23 @@ module.exports = {
         }
       )
   },
+  createAdmin: (data, callback) => {
+    pool.query(
+      `insert into admin(email, password, name)
+                    values(?,?,?)`,
+       [
+         data.email,
+         data.password,
+         data.name
+       ],
+       (error, results, fields) => {
+         if(error){
+           return callback(error);
+         }
+         return callback(null, results)
+       }
+    )
+  },
   getUsers: (callback) => {
     pool.query(
       `
@@ -117,6 +127,20 @@ module.exports = {
             return callback(error);
           }
           return callback(null, results)
+        }
+    )
+  },
+  getUserByEmail: (email, callback) => {
+    pool.query(
+      `select
+        * from admin
+        where email = ?`,
+        [email],
+        (error, results, field) => {
+          if(error){
+            return callback(error);
+          }
+          return callback(null, results[0])
         }
     )
   },

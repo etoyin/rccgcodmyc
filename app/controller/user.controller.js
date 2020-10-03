@@ -1,5 +1,12 @@
 const fs = require('fs');
 const cloudinary = require('../cloudinary');
+const { genSaltSync, hashSync, compareSync } = require("bcrypt")
+const { sign } = require("jsonwebtoken");
+//const { checkToken } = require("../auth/token_validation");
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 
 const { 
   create,
@@ -7,12 +14,36 @@ const {
   getUserById,
   updateUser,
   deleteUser,
-  getUserByEmail
+  getUserByEmail,
+  createAdmin,
  } = require("../services/user.service");
 //const { genSaltSync, hashSync, compareSync } = require("bcrypt")
 //const { sign } = require("jsonwebtoken");
 
 module.exports = {
+  getAll: (req, res) => {
+    getUsers((error, results) => {
+      if(error){
+        console.log(error);
+      }
+
+      if(!results){
+        message = 'No record found';
+        res.render('allWorkers.ejs', {
+          title: 'All Workers in COD',
+          message: message,
+          data: results
+        });
+      }
+
+      res.render('allWorkers.ejs', {
+        title: 'All Workers in COD',
+        data: results,
+        message: 'Good'
+      });
+
+    })
+  },
   getLoginForm: (req, res) => {
     let message = '';
     res.render('login.ejs', {
@@ -180,6 +211,91 @@ module.exports = {
         success: 1,
         message: "Updated successfully"
       })
+    })
+  },
+  deleteUser: (req, res) => {
+    const body = req.body;
+    deleteUser(body, (error, results) => {
+      if(error){
+        console.log(error);
+        return res.json({
+          success: 0,
+          message: "Database connection error"
+        });
+      }
+      if(!results){
+        return res.json({
+          success: 0,
+          message: "Record not found"
+        });
+      }
+      return res.json({
+        success: 1,
+        message: "user deleted successfully"
+      });
+    });
+  },
+  createAdmin: (req, res) => {
+    const body = req.body;
+    const salt = genSaltSync(10);
+    console.log(req.body);
+    console.log("object")
+    body.password = hashSync(body.password, salt);
+    createAdmin(body, (error, results) => {
+      if(error){
+        console.log(error);
+        return res.status(500).json({
+          success: 0,
+          message: "Database connection error"
+        });
+      }
+      return res.status(200).json({
+        success: 1,
+        data: results
+      })
+    })
+  },
+  logout: (req, res) => {
+    localStorage.clear();
+    return res.redirect('/');
+  },
+  login: (req, res) => {
+    const body = req.body;
+    getUserByEmail(body.email, (error, results) => {
+      if(error){
+        console.log(error)
+      }
+      if(!results){
+        return res.json({
+          success: 0,
+          message: "Invalid email or password"
+        });
+      }
+      //console.log(results);
+      const passwordCorrect = compareSync(body.password, results.password);
+      if(passwordCorrect){
+        results.password = undefined;
+        const token = sign({ result: results}, process.env.JWT_KEY, {
+          expiresIn: "24h"
+        });
+        localStorage.setItem('admin-data', JSON.stringify({
+          success: 1,
+          message: "Login successfully",
+          token: token,
+          data: results
+        }));
+        return res.json({
+          success: 1,
+          message: "Login successfully",
+          token: token,
+          data: results
+        });
+      }else{
+        return res.json({
+          success: 0,
+          message: "Invalid email or password"
+        });
+      }
     })
   }
 }

@@ -1,27 +1,29 @@
 const { verify } = require("jsonwebtoken");
+require("dotenv").config();
+
 
 module.exports = {
   checkToken: (req, res, next) => {
-    let token = req.get("authorization");
-    if(token){
-      token = token.slice(7);
-      verify(token, process.env.JWT_KEY, (error, decoded) => {
+    let data = JSON.parse(localStorage.getItem('admin-data'));
+    if(data && data.token){
+      //data.token = data.token.slice(7);
+      console.log(data);
+      verify(data.token, process.env.JWT_KEY, (error, decoded) => {
         if(error){
-          res.json({
-            success: 0,
-            message: "Invalid token",
-            validToken: false
+          console.log(error)
+          res.render('unauthorized.ejs', {
+            title: 'Unauthorized to access',
+            message: 'Unauthorized User'
           });
         }else{
           next();
         }
       })
     }else{
-      res.json({
-        success: 0,
-        message: "Access denied! unauthorised user",
-        validToken: false
-      })
+      res.render('unauthorized.ejs', {
+        title: 'Unauthorized to access',
+        message: 'Login as admin to get access'
+      });
     }
   }
 }

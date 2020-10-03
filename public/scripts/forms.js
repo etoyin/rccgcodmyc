@@ -27,7 +27,7 @@ $(document).ready(() => {
     }
   })
 
-  $('button[type="submit"]').click((e) => {
+  $('#submit-form').click((e) => {
     e.preventDefault();
     const name = $('input[name="name"]').val();
     const address = $('input[name="address"]').val();

@@ -1,0 +1,103 @@
+<%- include ('partials/header.ejs'); %>
+  <% console.log(data) %>
+  <% if(data.length > 0){  %>
+    <div>
+      <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
+      <h3 class="text-center">The PICP</h3>
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.name.search(/abioye/i) >= 0
+        }).sort((a, b) => {
+          let aG = a.gender.toUpperCase();
+          let bG = b.gender.toUpperCase();
+          let comp = 0;
+          comp = (aG > bG ? -1 : 1);
+          return comp
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='<%=x.image_name%>' class="picp_img rounded-circle" />
+              <h5><%= (x.gender === 'male' ? 'Pastor. '+ x.name : 'Pastor(Mrs). '+ x.name)%></h5>
+              <h6><%= (x.gender === 'male' ? 'Pastor-In-Charge-of-Provice' : 'Wife of the PICP')%></h6>
+            </a>
+          </div>
+        <%})%>
+      </div>
+
+      <h3 class="text-center">The Pastors</h3>
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.name.search(/abioye/i) < 0 && data.position == 'Pastorate';
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='<%=x.image_name%>' class="pastor_img rounded-circle" />
+              <h5><%= (x.gender === 'male' ? 'Pastor. '+ x.name : 'Pastor(Mrs). '+ x.name)%></h5>
+              <h6> Pastorate </h6>
+            </a>
+          </div>
+        <%})%>
+      </div>
+
+      <h4 class="text-center">The Ministers</h4>
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.position == 'Minister'; 
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='<%=x.image_name%>' class="picp_img rounded-circle" />
+              <h5>
+                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              </h5>
+              <h6 id='hod_caption'></h6>
+            </a>
+          </div>
+        <%})%>
+      </div>
+
+      <h4 class="text-center">The Heads of Departments</h4>
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.position == 'HOD'; 
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='<%=x.image_name%>' class="picp_img rounded-circle" />
+              <h5>
+                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              </h5>
+              <h6 id='hod_caption'></h6>
+            </a>
+          </div>
+        <%})%>
+      </div>
+
+      <h5 class="text-center">The Workers</h5>
+      <div class="flex-container">
+        <% data.filter((data) => {
+          return data.position == 'Worker'; 
+        }).forEach((x, i) => {%>
+          <div>
+            <a href='/profile/<%=x.id%>'>
+              <img src='<%=x.image_name%>' class="pastor_img rounded-circle" />
+              <h5>
+                <%= 
+                  (x.gender === 'male' ? 
+                  ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
+                  ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
+                %>
+              </h5>
+            </a>
+          </div>
+        <%})%>
+      </div>
+    </div>
+  <%} else {%>
+    <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
+    <h3 class="text-center">No Records found!</h3>
+  <%}%>
+</div> 
+</div>
+</body>
+</html>
