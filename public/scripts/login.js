@@ -13,7 +13,7 @@ $(document).ready(() => {
     $('.auth').append(`<a class="nav-link logout" href="" >Logout</a>`)
   }
   else{
-    $('.auth').append(`<a class="nav-link login" href="/login">Login</a>`)
+    $('.auth').append(`<a class="nav-link login" href="/login">Admin Login</a>`)
   }
   
   $('.logout').click(() => {

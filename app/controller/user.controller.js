@@ -90,7 +90,7 @@ module.exports = {
       })
     })
   },
-  getUserById: (req, res) => {
+  renderProfile: (req, res) => {
     const id = req.params.id;
     getUserById(id, (error, results) => {
       if(error){
@@ -110,6 +110,29 @@ module.exports = {
         title: results[0].name,
         data: results,
         message: 'Good'
+      });
+    });
+  },
+  getUserById: (req, res) => {
+    const id = req.params.id;
+    getUserById(id, (error, results) => {
+      if(error){
+        console.log(error);
+        return res.status(500).json({
+          success: 0,
+          message: "Database connection error"
+        });
+      }
+      if(!results){
+        return res.json({
+          success: 0,
+          message: "Record not found"
+        });
+      }
+      return res.json({
+        success: 1,
+        message: "Successful",
+        data: results
       });
     });
   },
@@ -278,12 +301,6 @@ module.exports = {
         const token = sign({ result: results}, process.env.JWT_KEY, {
           expiresIn: "24h"
         });
-        localStorage.setItem('admin-data', JSON.stringify({
-          success: 1,
-          message: "Login successfully",
-          token: token,
-          data: results
-        }));
         return res.json({
           success: 1,
           message: "Login successfully",

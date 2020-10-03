@@ -12,6 +12,7 @@ const {
   logout,
   createAdmin,
   getAll,
+  renderProfile,
   /*updateUser,
   deleteUser,
   login*/
@@ -30,7 +31,8 @@ router.post("/createAdmin", createAdmin);
 router.get("/login", getLoginForm);
 router.post("/login", login);
 router.post("/logout", logout);
-router.get("/profile/:id",checkToken, getUserById);
+router.get("/profile/:id", renderProfile);
+router.post("/prof/:id",checkToken, getUserById);
 //router.patch("/update", checkToken, updateUser);
 //router.delete("/delete", checkToken, deleteUser);
 //router.post("/login", login);

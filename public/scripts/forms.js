@@ -17,10 +17,27 @@ $(document).ready(() => {
     return arr;
   }
 
-  let image = '';
+  let image, baptismImage = '';
+  
   $('input[name="image"]').change(function(){
     if(this.files[0].size <= 500000){
-     image = $('input[name="image"]')[0].files[0];
+     image = $('input[name="image"]')[0].files[0]
+    }
+    else{
+      image = ''
+    }
+  });
+  $('input[name="baptismImage"]').change(function(){
+    if(this.files[0].size <= 500000){
+      baptismImage = $('input[name="baptismImage"]')[0].files[0]
+    }
+    else{
+      baptismImage = ''
+    }
+  });
+  $('input[name="image"]').change(function(){
+    if(this.files[0].size <= 500000){
+     image = $('input[name="image"]')[0].files[0]
     }
     else{
       image = ''
@@ -62,7 +79,7 @@ $(document).ready(() => {
       departments,
       year_became_worker,
       year_joined_rccg,
-      image,
+      image: [image, baptismImage],
       ordination,
       last_ordained_year,
       other_comments
@@ -73,6 +90,8 @@ $(document).ready(() => {
         state[key] = '';
       }
     });
+
+    console.log(state);
     
 
     let validateName = name.length >= 5;
@@ -149,7 +168,7 @@ $(document).ready(() => {
                     validateWorkerYear;
     
 
-    if(formValidate){
+    if(true){
       const fd = new FormData();
       fd.append('name', state.name);
       fd.append('address', state.address);
@@ -175,7 +194,7 @@ $(document).ready(() => {
         window.location.replace('/');
       }      
     
-      fetch('/register', {
+      /*fetch('/register', {
         method: 'POST',
         body: fd,
       })
@@ -198,7 +217,7 @@ $(document).ready(() => {
       })
       .catch(error => {
         console.error('Error:', error);
-      });
+      });*/
 
       
     }
