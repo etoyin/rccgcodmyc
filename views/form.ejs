@@ -1,5 +1,6 @@
 <%- include ('partials/header.ejs'); %>
   <div class="container">
+    <div id='modal'></div>
     <% if (message != '') { %>
       <p class="text-center text-danger"><%= message %></p>
     <% } %>
@@ -239,29 +240,29 @@
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload photo</b></label><br>
-          <input type="file" name="image" id="player-img" class="image" required>
+          <input type="file" name="image" id="profile" class="image" required>
         </div>
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload Baptismal Certificate</b></label><br>
-          <input type="file" name="baptismImage" id="player-img" class="image" required>
+          <input type="file" name="image" id="bapt" class="image" required>
         </div>
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload Workers-in-training</b></label><br>
-          <input type="file" name="workerImage" id="player-img" class="image" required>
+          <input type="file" name="image" id="wt" class="image" required>
         </div>
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload SOD Certificate</b></label><br>
-          <input type="file" name="sodImage" id="player-img" class="image" required>
+          <input type="file" name="image" id="sod" class="image" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-6">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload Bible College</b></label><br>
-          <input type="file" name="bibleCollImage" id="player-img" class="image" required>
+          <input type="file" name="image" id="bc" class="image" required>
         </div>
         <div class="col-md-6">
           <button type="submit" id='submit-form' class="btn btn-primary float-right">Submit</button>

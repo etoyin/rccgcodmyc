@@ -1,9 +1,9 @@
 $(document).ready(() => {
-  const mainProfileBody = (x) => {
+  const mainProfileBody = (x, images) => {
     return `
       <div class="">
         <div class="text-center">
-          <img src=${x.image_name} class="profile_img rounded-circle img-responsive" />
+          <img src=${x.image_name.split(",")[0]} class="profile_img rounded-circle img-responsive" />
           <h5></h5>
         </div>
         <div class="table-div">
@@ -67,6 +67,9 @@ $(document).ready(() => {
               </tr>
             </tbody>
           </table>
+          <div class='image text-center'>
+            ${images.join(",")}
+          </div>
         </div>
       </div>
     `
@@ -95,8 +98,18 @@ $(document).ready(() => {
               ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
               ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
     if(data.success == 1){
+      let images = [];
+      let z = '';
+      
+      if(x.image_name.split(",").length > 1){
+        for(let y=1; y<x.image_name.split(",").length; y++){
+          z = `<img src=${x.image_name.split(",")[y]} class="profile_img img-responsive"/>`
+          images.push(z);
+        }
+      }
+      console.log(x.image_name.split(",")[1])
       $('#profileName').append(name);
-      $('.mainProfileBody').append(mainProfileBody(x));
+      $('.mainProfileBody').append(mainProfileBody(x, images));
     }else{
       $('.mainProfileBody').append(`<h3>${data.message}: Login to access this page</h3>`);
     }

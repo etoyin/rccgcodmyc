@@ -22,7 +22,7 @@ const { checkToken } = require("../auth/token_validation");
 
 
 router.get("/", getHomePage);
-router.post("/register", upload.single('uploaded_img'), createUser);
+router.post("/register", upload.array('image'), createUser);
 router.get("/register", getForms);
 router.get("/pastors", getPastors);
 router.get("/departments", getEachDepartment);

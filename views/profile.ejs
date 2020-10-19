@@ -1,13 +1,8 @@
 <%- include ('partials/header.ejs'); %>
-  <% let x = data[0]; %>
+  <% let x = data[0];%>
   <div>
     <p style="visibility: hidden;" class="hiddenP"><%=x.id%></p>
     <h3 id='profileName' style="padding-top: 20px;" class="text-center">
-      <%= /*
-        (x.gender === 'male' ? 
-        ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
-        ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))*/
-      %>
     </h3>
     <div class='mainProfileBody'></div>
   </div>

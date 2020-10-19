@@ -17,30 +17,50 @@ $(document).ready(() => {
     return arr;
   }
 
-  let image, baptismImage = '';
+  let profile = '', 
+      bapt = '', 
+      bc = '', 
+      sod = '', 
+      wt = '';
   
-  $('input[name="image"]').change(function(){
-    if(this.files[0].size <= 500000){
-     image = $('input[name="image"]')[0].files[0]
+  $('input[id="profile"]').change(function(){
+    if(this.files[0].size <= 1000000){
+     profile = $('input[id="profile"]')[0].files[0]
     }
     else{
-      image = ''
+      profile = ''
     }
   });
-  $('input[name="baptismImage"]').change(function(){
-    if(this.files[0].size <= 500000){
-      baptismImage = $('input[name="baptismImage"]')[0].files[0]
+  $('input[id="bapt"]').change(function(){
+    if(this.files[0].size <= 1000000){
+      bapt = $('input[id="bapt"]')[0].files[0]
     }
     else{
-      baptismImage = ''
+      bapt = ''
     }
   });
-  $('input[name="image"]').change(function(){
-    if(this.files[0].size <= 500000){
-     image = $('input[name="image"]')[0].files[0]
+  $('input[id="wt"]').change(function(){
+    if(this.files[0].size <= 1000000){
+     wt = $('input[id="wt"]')[0].files[0]
     }
     else{
-      image = ''
+      wt = ''
+    }
+  });
+  $('input[id="sod"]').change(function(){
+    if(this.files[0].size <= 1000000){
+    sod = $('input[id="sod"]')[0].files[0]
+    }
+    else{
+      sod = ''
+    }
+  });
+  $('input[id="bc"]').change(function(){
+    if(this.files[0].size <= 1000000){
+     bc = $('input[id="bc"]')[0].files[0]
+    }
+    else{
+      bc = ''
     }
   })
 
@@ -79,85 +99,128 @@ $(document).ready(() => {
       departments,
       year_became_worker,
       year_joined_rccg,
-      image: [image, baptismImage],
+      profile,
+      bapt,
+      wt,
+      bc,
+      sod,
       ordination,
       last_ordained_year,
       other_comments
+    }
+    const errorMessages = {
+      name: '',
+      number: '',
+      address: '',
+      email: '',
+      dob: '',
+      gender: '',
+      marital: '',
+      education: '',
+      baptism: '',
+      training: '',
+      department: '',
+      position: '',
+      workerYear: '',
+      rccgYear: '',
+      imageError: ''
     }
 
     Object.keys(state).map((key, i) => {
       if(state[key] == undefined){
         state[key] = '';
       }
-    });
-
-    console.log(state);
-    
+    });    
+    let validateBapt = true, 
+        validateBc = true, 
+        validateSod = true, 
+        validateWt = true;
 
     let validateName = name.length >= 5;
-    let errorMessagesName = (validateName) ? '': 'Your name must be more than 5 characters';
-    $('.nameError').text(errorMessagesName);
-
+    errorMessages.name = (validateName) ? '': 'Your name must be more than 5 characters';
+    $('.nameError').text(errorMessages.name);
 
     let validateNumber = typeof(Number(number)) === 'number' && number.length >= 11;
-    let errorMessagesNumber = (validateNumber) ? '': 'Number empty or not up to 11 characters';
-    $('.numberError').text(errorMessagesNumber);
-    console.log(validateNumber);
+    errorMessages.number = (validateNumber) ? '': 'Number empty or not up to 11 characters';
+    $('.numberError').text(errorMessages.number);
     
     let validateAddress = address.length >= 10;
-    let errorMessagesAddress = (validateAddress) ? '': 'Address must be more than 10 characters';
-    $('.addressError').text(errorMessagesAddress);
+    errorMessages.address = (validateAddress) ? '': 'Address must be more than 10 characters';
+    $('.addressError').text(errorMessages.address);
 
-    let validateEmail = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-    let errorMessagesEmail = (validateEmail) ? '': 'Email empty or not correct.';
-    $('.emailError').text(errorMessagesEmail);
 
-    let validateDob = dob.match(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/);
-    let errorMessagesDob = (validateDob) ? '': 'Fill your date of birth in the right format';
-    $('.dobError').text(errorMessagesDob);
+    let validateEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/.test(String(email).toLowerCase());;
+    errorMessages.email = (validateEmail) ? '': 'Email empty or not correct.';
+    $('.emailError').text(errorMessages.email);
+
+    let validateDob = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/.test(String(dob));
+    errorMessages.dob = (validateDob) ? '': 'Fill your date of birth in the right format';
+    $('.dobError').text(errorMessages.dob);
 
     let validateGender = gender !== '';
-    let errorMessagesGender = (validateGender) ? '': 'Select a gender';
-    $('.genderError').text(errorMessagesGender);
+    errorMessages.gender = (validateGender) ? '': 'Select a gender';
+    $('.genderError').text(errorMessages.gender);
 
     let validateMarital = marital_status !== '';
-    let errorMessagesMarital = (validateMarital) ? '': 'Select your marital status';
-    $('.maritalError').text(errorMessagesMarital);
+    errorMessages.marital = (validateMarital) ? '': 'Select your marital status';
+    $('.maritalError').text(errorMessages.marital);
 
     let validateEducation = education !== '';
-    let errorMessagesEducation = (validateEducation) ? '': 'Select your education level';
-    $('.educationError').text(errorMessagesEducation);
+    errorMessages.education = (validateEducation) ? '': 'Select your education level';
+    $('.educationError').text(errorMessages.education);
 
     let validateWaterBapt = water_baptism !== '';
-    let errorMessagesBaptism = (validateWaterBapt) ? '': 'Select an option here';
-    $('.baptismError').text(errorMessagesBaptism);
+    errorMessages.baptism = (validateWaterBapt) ? '': 'Select whether you are baptized or not';
+    $('.baptismError').text(errorMessages.baptism);
 
     let validateTraining = training.length !== 0;
-    errorMessagesTraining = (validateTraining) ? '': 'Check at least one box';
-    $('.trainingError').text(errorMessagesTraining);
+    errorMessages.training = (validateTraining) ? '': 'Check at least one church training';
+    $('.trainingError').text(errorMessages.training);
 
     let validateDepartment = departments.length !== 0;
-    let errorMessagesDepartment = (validateDepartment) ? '': 'Check at least one department';
-    $('.departmentError').text(errorMessagesDepartment);
+    errorMessages.department = (validateDepartment) ? '': 'Check at least one department';
+    $('.departmentError').text(errorMessages.department);
 
     let validatePosition = position !== '';
-    let errorMessagesPosition = (validatePosition) ? '': 'Select your position';
-    $('.positionError').text(errorMessagesPosition);
+    errorMessages.position = (validatePosition) ? '': 'Select your position in church';
+    $('.positionError').text(errorMessages.position);
 
     let validateWorkerYear = year_became_worker.match(/([12]\d{3})/);
-    let errorMessagesWorkerYear = (validateWorkerYear) ? '': 'Fill this field';
-    $('.workerYearError').text(errorMessagesWorkerYear);
+    errorMessages.workerYear = (validateWorkerYear) ? '': 'Indicate year became worker';
+    $('.workerYearError').text(errorMessages.workerYear);
 
     let validateRccgYear = year_joined_rccg.match(/([12]\d{3})/);
-    let errorMessagesRccgYear = (validateRccgYear) ? '': 'Fill this field';
-    $('.rccgYearError').text(errorMessagesRccgYear);
+    errorMessages.rccgYear = (validateRccgYear) ? '': 'Indicate year joined RCCG';
+    $('.rccgYearError').text(errorMessages.rccgYear);
 
-    let validateImage = image !== '';
-    let imageError = (validateImage) ? '': 'Upload an image with size not more than 500kb';
-    $('.imageError').text(imageError);
+    let validateImage = profile !== '';
+    errorMessages.imageError = (validateImage) ? '': 'Upload an image with size not more than 500kb';
+    $('.imageError').text(errorMessages.imageError);
 
+    if( $('input[id="bapt"]')[0].files[0]){
+      validateBapt = $('input[id="bapt"]')[0].files[0] && bapt !== '';
+      errorMessages.imageError = (validateBapt) ? '': 'Upload an image with size not more than 500kb';
+      $('.imageError').text(errorMessages.imageError);
+    }
+
+    if( $('input[id="wt"]')[0].files[0]){
+      validateWt = $('input[id="wt"]')[0].files[0] && wt !== '';
+      errorMessages.imageError = (validateWt) ? '': 'Upload an image with size not more than 500kb';
+      $('.imageError').text(errorMessages.imageError);
+    }
+
+    if( $('input[id="sod"]')[0].files[0]){
+      validateSod = $('input[id="sod"]')[0].files[0] && sod !== '';
+      errorMessages.imageError = (validateSod) ? '': 'Upload an image with size not more than 500kb';
+      $('.imageError').text(errorMessages.imageError);
+    }
+
+    if( $('input[id="bc"]')[0].files[0]){
+      validateBc = $('input[id="bc"]')[0].files[0] && bc !== '';
+      errorMessages.imageError = (validateBc) ? '': 'Upload an image with size not more than 500kb';
+      $('.imageError').text(errorMessages.imageError);
+    }
  
-
     let formValidate = validateAddress && validateDob &&
                     validateDepartment && validateEducation &&
                     validateEmail && validateGender &&
@@ -165,10 +228,11 @@ $(document).ready(() => {
                     validateName && validateNumber &&
                     validatePosition && validateRccgYear &&
                     validateTraining && validateWaterBapt &&
-                    validateWorkerYear;
-    
+                    (validateWorkerYear || validateBapt ||
+                    validateBc || validateWt ||
+                    validateSod);
 
-    if(true){
+    if(formValidate){
       const fd = new FormData();
       fd.append('name', state.name);
       fd.append('address', state.address);
@@ -186,15 +250,18 @@ $(document).ready(() => {
       fd.append('year_became_worker', state.year_became_worker);
       fd.append('year_joined_rccg', state.year_joined_rccg);
       fd.append('last_ordained_year', state.last_ordained_year);
-      fd.append('uploaded_img', state.image);
+      fd.append('image', state.profile);
+      fd.append('image', state.bapt);
+      fd.append('image', state.wt);
+      fd.append('image', state.sod);
+      fd.append('image', state.bc);
       fd.append('other_comments', state.other_comments);
       
-      console.log(fd);
       function pageRedirect() {
         window.location.replace('/');
-      }      
+      }
     
-      /*fetch('/register', {
+      fetch('/register', {
         method: 'POST',
         body: fd,
       })
@@ -217,9 +284,33 @@ $(document).ready(() => {
       })
       .catch(error => {
         console.error('Error:', error);
-      });*/
-
+      });
+    }else{
+      let str = '';
+      let errArr = Object.keys(errorMessages).map((key, i) => {
+        if(errorMessages[key].length > 0){
+          return `<p key=${i}>${errorMessages[key]}</p>`
+        }else{
+          return ''
+        }
+      });
+      //remove commas from array and convert to str
+      for(let i=0; i<errArr.length; i++){
+        str+=errArr[i];
+      }
       
+      $('#modal').append(`
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div>${str}</div>
+        </div>
+      `).addClass('modal').css('display', 'block');
+      $('.close').click(function(){
+        $('#modal').removeClass('modal');
+        $('#modal').css('display', 'none');
+        $('.modal-content').remove();
+
+      })
     }
 
   })

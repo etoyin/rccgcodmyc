@@ -61,21 +61,23 @@ module.exports = {
     });
   },
   createUser: async (req, res) => {
-    console.log("object")
     //const body = req.body;
     //const salt = genSaltSync(10);
     //body.password = hashSync(body.password, salt);
-    const uploader = async (path) => await cloudinary.uploads(path, 'Images');
-    const file = req.file;
-    const {path} = file;
-    const newPath = await uploader(path);
-    //const newPat = uploader(path);
-    //const fileName = (new Date).valueOf() + "-" + file.originalname;
-    //console.log(fileName);
-    console.log(newPath.url);
-    //console.log(newPat);
-    fs.unlinkSync(path);
-    create(req, newPath.url, (error, results) => {
+    console.log(req.body.name.split(",").join(""));
+    const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
+    const urls = [];
+    const files = req.files;
+    for(const file of files){
+      const {path} = file;
+      const newPath = await uploader(path);
+      //console.log(newPath);
+      urls.push(newPath.url);
+      fs.unlinkSync(path);
+  }
+  let url = urls.join(", ");
+    
+    create(req, url, (error, results) => {
       //console.log("object")
       if(error){
         console.log(error);
@@ -106,11 +108,15 @@ module.exports = {
           message: "Record not found"
         });
       }
-      res.render('profile.ejs', {
-        title: results[0].name,
-        data: results,
-        message: 'Good'
-      });
+      
+      if(results){
+        console.log(results);
+        res.render('profile.ejs', {
+          title: results[0].name,
+          data: results,
+          message: 'Good'
+        });
+      }
     });
   },
   getUserById: (req, res) => {

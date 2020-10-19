@@ -9,14 +9,13 @@ nav{
 
 
 .worship_text{
-  position: relative;
-  top: 40%;
+  padding-top: 100px;
   color: rgb(216, 221, 236);
 }
 .home_bg {
   font-style: italic;
   padding-top: 20px;
-  background-image: url('/images/display_img/church.jpg');
+  background-image: url('/images/display_img/church.jpeg');
   opacity: 0.8;
   width: 100%;
   height: 500px;
@@ -94,6 +93,43 @@ tr{
 tr:nth-child(even) {
   background: #777; 
   color: white; 
+}
+
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  color: rgb(179, 24, 24);
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 760px),
