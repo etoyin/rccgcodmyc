@@ -12,7 +12,8 @@ module.exports = {
     const {
       name, 
       address, 
-      number, 
+      number,
+      password,
       email, 
       gender, 
       marital_status,
@@ -26,15 +27,19 @@ module.exports = {
       training,
       departments,
       ordination,
-      position
+      position,
+
     } = req.body;
+    let hodDepartment = (req.body.hodDepartment != undefined) ? req.body.hodDepartment: '';
+    
     pool.query(
       `insert into user
         (
           name, 
           address, 
           number, 
-          email, 
+          email,
+          password, 
           gender, 
           marital_status,
           dob,
@@ -48,14 +53,16 @@ module.exports = {
           departments,
           training,
           ordination,
-          position
+          position,
+          hodDepartment
         )
-        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
         [
           captilize(name),
           address, 
           number, 
-          email, 
+          email,
+          password,
           gender, 
           marital_status,
           dob,
@@ -69,7 +76,8 @@ module.exports = {
           departments,
           training,
           ordination,
-          position
+          position,
+          hodDepartment
         ],
         (error, results, fields) => {
           if(error){
@@ -77,7 +85,6 @@ module.exports = {
           }
 
           let user_id = results.insertId;
-          console.log(user_id);
           return callback(null, results)
         }
       )
@@ -133,6 +140,20 @@ module.exports = {
   getUserByEmail: (email, callback) => {
     pool.query(
       `select
+        * from user
+        where email = ?`,
+        [email],
+        (error, results, field) => {
+          if(error){
+            return callback(error);
+          }
+          return callback(null, results[0])
+        }
+    )
+  },
+  getAdminEmail: (email, callback) => {
+    pool.query(
+      `select
         * from admin
         where email = ?`,
         [email],
@@ -144,24 +165,74 @@ module.exports = {
         }
     )
   },
-  updateUser: (data, callback) => {
+  updateUser: (data, newPath, callback) => {
+    const {
+      name, 
+      address, 
+      number,
+      password,
+      email, 
+      gender, 
+      marital_status,
+      dob,
+      education,
+      water_baptism,
+      last_ordained_year,
+      year_became_worker,
+      year_joined_rccg,
+      other_comments,
+      training,
+      departments,
+      ordination,
+      position,
+      id
+    } = data;
+    let hodDepartment = (data.hodDepartment != undefined) ? data.hodDepartment: '';
     pool.query(
       `update user set
-        first_name=?,
-        last_name=?,
+        name=?, 
+        address=?, 
+        number=?, 
         email=?,
-        password=?,
-        phone=?,
-        organization=?
+        password=?, 
+        gender=?, 
+        marital_status=?,
+        dob=?,
+        education=?,
+        water_baptism=?,
+        last_ordained_year=?,
+        year_became_worker=?,
+        year_joined_rccg=?,
+        other_comments=?,
+        image_name=?,
+        departments=?,
+        training=?,
+        ordination=?,
+        position=?,
+        hodDepartment=?
         where id=?`,
         [
-          data.first_name,
-          data.last_name,
-          data.email,
-          data.password,
-          data.phone,
-          data.organization,
-          data.id
+          captilize(name),
+          address, 
+          number, 
+          email,
+          password,
+          gender, 
+          marital_status,
+          dob,
+          education,
+          water_baptism,
+          last_ordained_year,
+          year_became_worker,
+          year_joined_rccg,
+          other_comments,
+          newPath,
+          departments,
+          training,
+          ordination,
+          position,
+          hodDepartment,
+          id
         ],
         (error, results, field) => {
           if(error){

@@ -1,7 +1,7 @@
 {
   "name": "rccgcodmyc",
   "version": "1.0.0",
-  "description": "A site for members info",
+  "description": "A site for COD members info",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 body, html {
   height: 100%;
   font-family: 'Kufam', cursive;
@@ -71,6 +73,12 @@ a:link, a:visited{
   width: 80%;
   margin-right: auto;
   margin-left: auto;
+}
+.indexTextContent{
+  padding: 20px;
+  text-align: justify;
+  font-size: 1.4em;
+  font-family: 'Quicksand', sans-serif;
 }
 
 tr > td {

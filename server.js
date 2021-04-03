@@ -11,7 +11,7 @@ const userRouter = require("./app/routes/user.router");
 app.use(cors());
 
 app.use(bodyParser.json());
-
+//app.use(require('connect').bodyParser());
 
 app.use("/", userRouter);
 //app.use("/api/transcript", transcriptRouter)

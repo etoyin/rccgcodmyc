@@ -7,7 +7,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
 }
-
+let dataUpdate = {};
 const { 
   create,
   getUsers,
@@ -15,6 +15,7 @@ const {
   updateUser,
   deleteUser,
   getUserByEmail,
+  getAdminEmail,
   createAdmin,
  } = require("../services/user.service");
 //const { genSaltSync, hashSync, compareSync } = require("bcrypt")
@@ -35,18 +36,25 @@ module.exports = {
           data: results
         });
       }
-
+      //results[0].password = undefined;
       res.render('allWorkers.ejs', {
         title: 'All Workers in COD',
         data: results,
         message: 'Good'
       });
-
     })
   },
   getLoginForm: (req, res) => {
     let message = '';
     res.render('login.ejs', {
+      title: 'RCCGCODMYC | Login',
+      message: message,
+      data: ''
+    });
+  },
+  getAdminLoginForm: (req, res) => {
+    let message = '';
+    res.render('adminLogin.ejs', {
       title: 'RCCGCODMYC | Administrator Login',
       message: message,
       data: ''
@@ -60,25 +68,50 @@ module.exports = {
       data: ''
     });
   },
+  getFormsForUpdate: (req, res) => {
+    let message = '';
+    res.render('update.ejs', {
+      title: 'RCCGCODMYC | View Ministers',
+      message: message,
+      data: ''
+    });
+  },
   createUser: async (req, res) => {
-    //const body = req.body;
-    //const salt = genSaltSync(10);
-    //body.password = hashSync(body.password, salt);
-    console.log(req.body.name.split(",").join(""));
+    const body = req.body;
+    const salt = genSaltSync(10);
+    body.password = hashSync(body.password, salt);
     const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
     const urls = [];
     const files = req.files;
     for(const file of files){
       const {path} = file;
       const newPath = await uploader(path);
-      //console.log(newPath);
       urls.push(newPath.url);
       fs.unlinkSync(path);
-  }
-  let url = urls.join(", ");
+    }
+    let url = urls.join(", ");
     
     create(req, url, (error, results) => {
-      //console.log("object")
+      if(error){
+        console.log(error);
+        return res.status(500).json({
+          success: 0,
+          message: "Database connection error"
+        });
+      }
+      return res.status(200).json({
+        success: 1,
+        data: results,
+        message: "Database connection error"
+      });
+    });
+    
+  },
+  createAdmin: (req, res) => {
+    const body = req.body;
+    const salt = genSaltSync(10);
+    body.password = hashSync(body.password, salt);
+    createAdmin(body, (error, results) => {
       if(error){
         console.log(error);
         return res.status(500).json({
@@ -108,14 +141,13 @@ module.exports = {
           message: "Record not found"
         });
       }
-      
-      if(results){
-        console.log(results);
+      if(results[0]){
+        results[0].password = undefined;
         res.render('profile.ejs', {
           title: results[0].name,
           data: results,
           message: 'Good'
-        });
+        })
       }
     });
   },
@@ -148,7 +180,7 @@ module.exports = {
       if(error){
         console.log(error);
       }
-      
+
       let data = results.filter((data) => {
         let departm = new RegExp(department,"i");
         return data.departments.search(departm) >= 0
@@ -166,6 +198,7 @@ module.exports = {
       res.render('departments.ejs', {
         title: department.toUpperCase() + 'department',
         data,
+        department,
         message: 'Good'
       });
 
@@ -210,7 +243,6 @@ module.exports = {
           message: message,
         });
       }
-      //console.log(results)
       res.render('index.ejs', {
         title: 'RCCGCODMYC | View Ministers',
         data: results,
@@ -218,11 +250,22 @@ module.exports = {
       });
     });
   },
-  updateUser: (req, res) => {
+  updateUser: async (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
     body.password = hashSync(body.password, salt);
-    updateUser(body, (error, results) => {
+    console.log(req.body);
+    const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
+    const urls = [];
+    const files = req.files;
+    for(const file of files){
+      const {path} = file;
+      const newPath = await uploader(path);
+      urls.push(newPath.url);
+      fs.unlinkSync(path);
+    }
+    let url = urls.join(", ");
+    updateUser(body, url, (error, results) => {
       if(error){
         console.log(error);
         return res.json({
@@ -235,11 +278,32 @@ module.exports = {
           success: 0,
           message: "Failed to Update user"
         });
+        
       }
+      //dataUpdate.message = 'Updated successfully!';
+    });
+    getUserByEmail(body.email, (error, results) => {
+      if(error){
+        console.log(error);
+      }
+      if(!results){
+        return res.json({
+          success: 0,
+          message: "Invalid email or password"
+        });
+      }
+        
+      results.password = undefined;
+      const token = sign({ result: results}, process.env.JWT_KEY, {
+        expiresIn: "100h"
+      });
       return res.json({
         success: 1,
-        message: "Updated successfully"
-      })
+        message: "updated successfully",
+        genMessage: "LoggedIn",
+        token: token,
+        data: results
+      });
     })
   },
   deleteUser: (req, res) => {
@@ -264,26 +328,6 @@ module.exports = {
       });
     });
   },
-  createAdmin: (req, res) => {
-    const body = req.body;
-    const salt = genSaltSync(10);
-    console.log(req.body);
-    console.log("object")
-    body.password = hashSync(body.password, salt);
-    createAdmin(body, (error, results) => {
-      if(error){
-        console.log(error);
-        return res.status(500).json({
-          success: 0,
-          message: "Database connection error"
-        });
-      }
-      return res.status(200).json({
-        success: 1,
-        data: results
-      })
-    })
-  },
   logout: (req, res) => {
     localStorage.clear();
     return res.redirect('/');
@@ -292,7 +336,7 @@ module.exports = {
     const body = req.body;
     getUserByEmail(body.email, (error, results) => {
       if(error){
-        console.log(error)
+        console.log(error);
       }
       if(!results){
         return res.json({
@@ -300,16 +344,54 @@ module.exports = {
           message: "Invalid email or password"
         });
       }
-      //console.log(results);
       const passwordCorrect = compareSync(body.password, results.password);
+      
       if(passwordCorrect){
+        
         results.password = undefined;
         const token = sign({ result: results}, process.env.JWT_KEY, {
-          expiresIn: "24h"
+          expiresIn: "100h"
         });
         return res.json({
           success: 1,
           message: "Login successfully",
+          genMessage: "LoggedIn",
+          token: token,
+          data: results
+        });
+      }else{
+        return res.json({
+          success: 0,
+          message: "Invalid email or password"
+        });
+      }
+    })
+  },
+  adminLogin: (req, res) => {
+    const body = req.body;
+    getAdminEmail(body.email, (error, results) => {
+      if(error){
+        console.log(error);
+      }
+      if(!results){
+        return res.json({
+          success: 0,
+          message: "Invalid email or password"
+        });
+      }
+      const passwordCorrect = compareSync(body.password, results.password);
+      
+      if(passwordCorrect){
+        
+        results.password = undefined;
+        const token = sign({ result: results}, process.env.JWT_KEY, {
+          expiresIn: "100h"
+        });
+        return res.json({
+          success: 1,
+          message: "Login successfully",
+          genMessage: "LoggedIn",
+          admin: true,
           token: token,
           data: results
         });

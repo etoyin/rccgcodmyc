@@ -1,0 +1,27 @@
+<%- include ('partials/header.ejs'); %>
+  <% %>
+
+
+  <!--===============================Modal Login Form-========================-->
+  <div id="id01" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <div class="imgcontainer">
+        <span class="close" title="Close Modal">&times;</span>
+        <img src="images/display_img/logo.jpg" alt="Logo" class="avatar">
+      </div>
+      <div class="error text-center"></div>
+      <div class="container">
+        <label for="admin"><b>Admin Username</b></label>
+        <input type="text" placeholder="Enter Username" name="admin" required>
+  
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+          
+        <button class="button" id='admin_login' type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+</body>
+</html>

@@ -8,13 +8,16 @@ const {
   getPastors,
   getEachDepartment,
   getLoginForm,
+  getAdminLoginForm,
   login,
+  adminLogin,
   logout,
   createAdmin,
   getAll,
   renderProfile,
-  /*updateUser,
-  deleteUser,
+  getFormsForUpdate,
+  updateUser,
+  /*deleteUser,
   login*/
  } = require("../controller/user.controller");
 const router = require("express").Router();
@@ -27,13 +30,16 @@ router.get("/register", getForms);
 router.get("/pastors", getPastors);
 router.get("/departments", getEachDepartment);
 router.get("/all-workers", getAll);
+router.get("/update", getFormsForUpdate);
 router.post("/createAdmin", createAdmin);
 router.get("/login", getLoginForm);
+router.get("/admin_login", getAdminLoginForm);
 router.post("/login", login);
+router.post("/admin_login", adminLogin);
 router.post("/logout", logout);
 router.get("/profile/:id", renderProfile);
-router.post("/prof/:id",checkToken, getUserById);
-//router.patch("/update", checkToken, updateUser);
+router.post("/profile/:id",checkToken, getUserById);
+router.patch("/update", checkToken, upload.array('image'), updateUser);
 //router.delete("/delete", checkToken, deleteUser);
 //router.post("/login", login);
 

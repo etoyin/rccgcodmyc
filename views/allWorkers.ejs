@@ -1,9 +1,8 @@
 <%- include ('partials/header.ejs'); %>
-  <% console.log(data) %>
   <% if(data.length > 0){  %>
     <div>
       <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
-      <h3 class="text-center">The PICP</h3>
+      <!--h3 class="text-center">The PICP</h3>
       <div class="flex-container">
         <% data.filter((data) => {
           return data.name.search(/abioye/i) >= 0
@@ -37,7 +36,7 @@
             </a>
           </div>
         <%})%>
-      </div>
+      </div-->
 
       <h4 class="text-center">The Ministers</h4>
       <div class="flex-container">
@@ -45,7 +44,7 @@
           return data.position == 'Minister'; 
         }).forEach((x, i) => {%>
           <div>
-            <a href='/profile/<%=x.id%>'>
+            <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="picp_img rounded-circle" />
               <h5>
                 <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
@@ -62,7 +61,7 @@
           return data.position == 'HOD'; 
         }).forEach((x, i) => {%>
           <div>
-            <a href='/profile/<%=x.id%>'>
+            <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="picp_img rounded-circle" />
               <h5>
                 <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
@@ -79,7 +78,7 @@
           return data.position == 'Worker'; 
         }).forEach((x, i) => {%>
           <div>
-            <a href='/profile/<%=x.id%>'>
+            <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="pastor_img rounded-circle" />
               <h5>
                 <%= 

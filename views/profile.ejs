@@ -1,7 +1,8 @@
 <%- include ('partials/header.ejs'); %>
+
   <% let x = data[0];%>
   <div>
-    <p style="visibility: hidden;" class="hiddenP"><%=x.id%></p>
+    <p style="visibility: hidden;" class="hiddenP"><%=x ? x.id : ''%></p>
     <h3 id='profileName' style="padding-top: 20px;" class="text-center">
     </h3>
     <div class='mainProfileBody'></div>

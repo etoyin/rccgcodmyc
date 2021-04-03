@@ -5,7 +5,8 @@ const app = express();
 
 app.use(cors());
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(require('connect').bodyParser());
 
 
 app.get("/", (req, res) => {

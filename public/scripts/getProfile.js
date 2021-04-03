@@ -1,4 +1,7 @@
 $(document).ready(() => {
+
+
+
   const mainProfileBody = (x, images) => {
     return `
       <div class="">
@@ -67,24 +70,29 @@ $(document).ready(() => {
               </tr>
             </tbody>
           </table>
+          <div class='text-center'>
+            <h5 style='line-height: 30px'>Certificates</h5>
+          </div>
           <div class='image text-center'>
             ${images.join(",")}
           </div>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <button id='edit' class='btn btn-primary'>Edit details</button>
         </div>
       </div>
     `
   } 
 
-  const getLocalStorage = JSON.parse(localStorage.getItem('admin-data'));
+  const getLocalStorage = JSON.parse(localStorage.getItem('user-data'));
   const token = getLocalStorage ? getLocalStorage.token : '';
-  console.log(token);
+  console.log(getLocalStorage);
   async function getProfile(url) {
-    
-    return response.json() // parses JSON response into native JavaScript objects
+    return response.json(); // parses JSON response into native JavaScript objects
   };
 
   let id = $('.hiddenP').text();
-  let url = '/prof/' + id;
+  let url = '/profile/' + id;
   fetch(url, {
     method: 'POST',
     headers: {
@@ -93,14 +101,17 @@ $(document).ready(() => {
   })
   .then(response => response.json())
   .then(data => {
+    console.log(data.data[0].id);
     let x = data.data ? data.data[0]: '';
     let name = (x.gender === 'male' ? 
               ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
-              ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
-    if(data.success == 1){
+              ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name));
+    storageData = getLocalStorage ? getLocalStorage : '';
+    console.log(x);
+    if(data.success == 1 && (x.id == getLocalStorage.data.id || getLocalStorage.admin)){
       let images = [];
       let z = '';
-      
+    
       if(x.image_name.split(",").length > 1){
         for(let y=1; y<x.image_name.split(",").length; y++){
           z = `<img src=${x.image_name.split(",")[y]} class="profile_img img-responsive"/>`
@@ -110,13 +121,21 @@ $(document).ready(() => {
       console.log(x.image_name.split(",")[1])
       $('#profileName').append(name);
       $('.mainProfileBody').append(mainProfileBody(x, images));
+      $('#edit').on('click', function(){
+        alert('kkk');
+        window.location.replace('/update');
+      });
     }else{
-      $('.mainProfileBody').append(`<h3>${data.message}: Login to access this page</h3>`);
+      $('.mainProfileBody').append(`<h3>Unauthorized to view this page</h3>`);
+    }
+    if(!data){
+      $('.mainProfileBody').append(`<h3>Unauthorized to view this page</h3>`);
     }
     console.log(data)
   })
   .catch((error) => {
     console.error('Error:', error);
+    $('.mainProfileBody').append(`<h3>Unauthorized to view this page</h3>`);
   });
   
   //getProfile(url).then(res => console.log(res) );

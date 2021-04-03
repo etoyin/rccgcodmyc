@@ -10,28 +10,28 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <p class="error nameError"></p>
-          <input type="text" class="form-control" name="name" value="<%=data.name%>" placeholder="Full Name" required>
+          <input type="text" class="form-control" name="u_name" placeholder="Full Name" required>
         </div>
         <div class="form-group col-md-4">
           <p class="error addressError"></p>
-          <input type="text" class="form-control" name="address" placeholder="Address" required>
+          <input type="text" class="form-control" name="u_address" placeholder="Address" required>
         </div>
         <div class="form-group col-md-4">
           <p class="error numberError"></p>
-          <input type="number" class="form-control" name="number" placeholder="Phone Number" required>
+          <input type="number" class="form-control" name="u_number" placeholder="Phone Number" required>
         </div>
         <div class="form-group col-md-4">
           <p class="error emailError"></p>
-          <input type="email" class="form-control" name="email" placeholder="Email" required>
+          <input type="email" class="form-control" name="u_email" placeholder="Email" required>
         </div>
         <div class="form-group col-md-4">
           <p class="error passwordError"></p>
-          <input type="password" class="form-control" name="password" placeholder="Password" required>
+          <input type="password" class="form-control" name="u_password" placeholder="Password" required>
         </div>
 
         <div class="form-group col-md-4">
           <p class="error passwordConfirmError"></p>
-          <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+          <input type="password" class="form-control" name="u_confirm_password" placeholder="Confirm Password" required>
         </div>
 
         <div class="form-group col-md-4">
@@ -40,7 +40,7 @@
             onfocus="(this.type='date')" 
             onblur="(this.type='text')"
             class="form-control" 
-            name="dob"
+            name="u_dob"
             placeholder="Date of Birth" required />
         </div>
 
@@ -48,7 +48,7 @@
         
         <div class="form-group col-md-4">
           <p class="error genderError"></p>
-          <select type="text" class="form-control" name="gender" required>
+          <select type="text" class="form-control" name="u_gender" required>
             <option value="">Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -59,7 +59,7 @@
 
         <div class="form-group col-md-4">
           <p class="error maritalError"></p>
-          <select type="text" class="form-control" name="marital_status" required>
+          <select type="text" class="form-control" name="u_marital_status" required>
             <option value="">Marital Status</option>
             <option value="single">Single</option>
             <option value="married">Married</option>
@@ -70,7 +70,7 @@
         
         <div class="form-group col-md-4">
           <p class="error educationError"></p>
-          <select type="text" class="form-control" name="education" required>
+          <select type="text" class="form-control" name="u_education" required>
             <option value="">Select Education Qualification</option>
             <option value="PhD">PhD</option>
             <option value="Masters">Masters</option>
@@ -86,7 +86,7 @@
 
         <div class="form-group col-md-4">
           <p class="error baptismError"></p>
-          <select type="text" class="form-control" name="water_baptism" required>
+          <select type="text" class="form-control" name="u_water_baptism" required>
             <option value="">Water Baptism</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
@@ -190,7 +190,7 @@
 
         <div class="form-group col-md-4">
           <p class="error ordinationStatusError"></p>
-          <select type="text" class="form-control" name="ordination" required>
+          <select type="text" class="form-control" name="u_ordination" required>
             <option value="">Ordination Status</option>
             <option value="deacon">Deacon</option>
             <option value="asst_pastor">Assistant Pastor</option>
@@ -205,7 +205,7 @@
             max="2020"
             min="1960"
             class="form-control" 
-            name="last_ordained_year" 
+            name="u_last_ordained_year" 
             placeholder="Year Last Ordination" required>
         </div>
 
@@ -216,7 +216,7 @@
             max="2020"
             min="1960"
             class="form-control" 
-            name="year_became_worker" 
+            name="u_year_became_worker" 
             placeholder="Year Became Worker" required>
         </div>
 
@@ -227,13 +227,13 @@
             max="2020"
             min="1960"
             class="form-control" 
-            name="year_joined_rccg" 
+            name="u_year_joined_rccg" 
             placeholder="Year Joined RCCG" required>
         </div>
 
         <div class="form-group col-md-4 position-div">
           <p class="error positionError"></p>
-          <select id="position-input" type="text" class="form-control" name="position" required>
+          <select id="u_position-input" type="text" class="form-control" name="u_position" required>
             <option value="">Current Position in Church</option>
             <option value="Worker">Worker</option>
             <option value="HOD">HOD</option>
@@ -246,7 +246,7 @@
           <textarea 
             class="form-control" 
             rows="9" 
-            name="other" 
+            name="u_other" 
             id="other" 
             placeholder="Other Information"></textarea>
         </div>
@@ -255,32 +255,32 @@
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload photo</b></label><br>
-          <input type="file" name="image" id="profile" class="image" required>
+          <input type="file" name="u_image" id="profile" class="image" required>
         </div>
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload Baptismal Certificate</b></label><br>
-          <input type="file" name="image" id="bapt" class="image" required>
+          <input type="file" name="u_image" id="bapt" class="image" required>
         </div>
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload Workers-in-training</b></label><br>
-          <input type="file" name="image" id="wt" class="image" required>
+          <input type="file" name="u_image" id="wt" class="image" required>
         </div>
         <div class="col-md-3">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload SOD Certificate</b></label><br>
-          <input type="file" name="image" id="sod" class="image" required>
+          <input type="file" name="u_image" id="sod" class="image" required>
         </div>
       </div>
       <div class="form-row">
         <div class="col-md-6">
           <p class="error imageError"></p>
           <label for="player-img"><b>Upload Bible College</b></label><br>
-          <input type="file" name="image" id="bc" class="image" required>
+          <input type="file" name="u_image" id="bc" class="image" required>
         </div>
         <div class="col-md-6">
-          <button type="submit" id='submit-form' class="btn btn-primary float-right">Submit</button>
+          <button type="submit" id='update-form' class="btn btn-primary float-right">Update</button>
         </div>
       </div>
     </form>

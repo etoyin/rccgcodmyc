@@ -5,7 +5,6 @@ module.exports = {
     let token = req.get("authorization");
     if(token){
       token = token.slice(7);
-    console.log(token);
       verify(token, process.env.JWT_KEY, (error, decoded) => {
         if(error){
           res.json({
