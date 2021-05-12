@@ -9,22 +9,27 @@
     <form style="padding-top: 20px;" class="add-player-form" action="" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error nameError"></p>
           <input type="text" class="form-control" name="name" value="<%=data.name%>" placeholder="Full Name" required>
         </div>
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error addressError"></p>
           <input type="text" class="form-control" name="address" placeholder="Address" required>
         </div>
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error numberError"></p>
           <input type="number" class="form-control" name="number" placeholder="Phone Number" required>
         </div>
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error emailError"></p>
           <input type="email" class="form-control" name="email" placeholder="Email" required>
         </div>
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error passwordError"></p>
           <input type="password" class="form-control" name="password" placeholder="Password" required>
         </div>
@@ -47,6 +52,7 @@
         <!-----------------Gender------------------->
         
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error genderError"></p>
           <select type="text" class="form-control" name="gender" required>
             <option value="">Gender</option>
@@ -58,6 +64,7 @@
         <!-----------------Marital Status------------------->
 
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error maritalError"></p>
           <select type="text" class="form-control" name="marital_status" required>
             <option value="">Marital Status</option>
@@ -69,6 +76,7 @@
         </div>
         
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error educationError"></p>
           <select type="text" class="form-control" name="education" required>
             <option value="">Select Education Qualification</option>
@@ -85,6 +93,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error baptismError"></p>
           <select type="text" class="form-control" name="water_baptism" required>
             <option value="">Water Baptism</option>
@@ -96,7 +105,7 @@
         <!-----------------Church Training----------------------->
         <p class="error trainingError"></p>
         <ul style="padding-left: 40px" class="training form-group col-md-4">
-          <label class="label">Church Training Obtained</label>
+          <label class="label">Church Training Obtained<span style="color: red">*</span></label>
           <li class="">
             <label class="form-check-label">
               <input type="checkbox" class="form-check-input" value="Believer's Class">Believer's Class
@@ -127,7 +136,7 @@
         <!-----------------Departments----------------------->
         <p class="error departmentError"></p>
         <div style="padding-left: 40px" class="form-group departments col-md-4">
-          <label class="label">Department(s)</label>
+          <label class="label">Department(s) <span style="color: red">*</span></label>
           <div class="">
             <label class="form-check-label">
               <input type="checkbox" class="form-check-input" value="Technical">Technical
@@ -204,6 +213,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error ordinationStatusError"></p>
           <select type="text" class="form-control" name="ordination" required>
             <option value="">Ordination Status</option>
@@ -214,6 +224,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error oridinationYearError"></p>
           <input 
             type="number"
@@ -225,6 +236,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error workerYearError"></p>
           <input 
             type="number"
@@ -236,6 +248,7 @@
         </div>
 
         <div class="form-group col-md-4">
+          <span style="color: red">*</span>
           <p class="error rccgYearError"></p>
           <input 
             type="number"
@@ -248,6 +261,7 @@
 
         <div class="form-group col-md-4 position-div">
           <p class="error positionError"></p>
+          <span style="color: red">*</span>
           <select id="position-input" type="text" class="form-control" name="position" required>
             <option value="">Current Position in Church</option>
             <option value="Worker">Worker</option>
@@ -269,7 +283,7 @@
       <div class="form-row">
         <div class="col-md-3">
           <p class="error imageError"></p>
-          <label for="player-img"><b>Upload photo</b></label><br>
+          <label for="player-img"><b>Upload photo</b><span style="color: red">*</span></label><br>
           <input type="file" name="image" id="profile" class="image" required>
         </div>
         <div class="col-md-3">

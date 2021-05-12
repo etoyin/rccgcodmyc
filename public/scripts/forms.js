@@ -10,6 +10,8 @@ let departments = [ "Technical",
                     "Media",
                     "Prayer",
                     "Sign Language",
+                    "Teen/Children",
+                    "Welfare"
                   ];
 
 let selectOptions = departments.map((department) => {
