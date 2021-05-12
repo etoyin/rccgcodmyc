@@ -9,28 +9,28 @@
     <form style="padding-top: 20px;" class="add-player-form" action="" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error nameError"></p>
+          <span style="color: red">*</span>
           <input type="text" class="form-control" name="name" value="<%=data.name%>" placeholder="Full Name" required>
         </div>
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error addressError"></p>
+          <span style="color: red">*</span>
           <input type="text" class="form-control" name="address" placeholder="Address" required>
         </div>
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error numberError"></p>
+          <span style="color: red">*</span>
           <input type="number" class="form-control" name="number" placeholder="Phone Number" required>
         </div>
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error emailError"></p>
+          <span style="color: red">*</span>
           <input type="email" class="form-control" name="email" placeholder="Email" required>
         </div>
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error passwordError"></p>
+          <span style="color: red">*</span>
           <input type="password" class="form-control" name="password" placeholder="Password" required>
         </div>
 
@@ -41,6 +41,7 @@
 
         <div class="form-group col-md-4">
           <p class="error dobError"></p>
+          <span style="color: red">*</span>
           <input 
             onfocus="(this.type='date')" 
             onblur="(this.type='text')"
@@ -52,8 +53,8 @@
         <!-----------------Gender------------------->
         
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error genderError"></p>
+          <span style="color: red">*</span>
           <select type="text" class="form-control" name="gender" required>
             <option value="">Gender</option>
             <option value="male">Male</option>
@@ -64,8 +65,8 @@
         <!-----------------Marital Status------------------->
 
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error maritalError"></p>
+          <span style="color: red">*</span>
           <select type="text" class="form-control" name="marital_status" required>
             <option value="">Marital Status</option>
             <option value="single">Single</option>
@@ -76,8 +77,8 @@
         </div>
         
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error educationError"></p>
+          <span style="color: red">*</span>
           <select type="text" class="form-control" name="education" required>
             <option value="">Select Education Qualification</option>
             <option value="PhD">PhD</option>
@@ -93,8 +94,8 @@
         </div>
 
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error baptismError"></p>
+          <span style="color: red">*</span>
           <select type="text" class="form-control" name="water_baptism" required>
             <option value="">Water Baptism</option>
             <option value="yes">Yes</option>
@@ -213,9 +214,8 @@
         </div>
 
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error ordinationStatusError"></p>
-          <select type="text" class="form-control" name="ordination" required>
+          <select type="text" class="form-control" name="ordination">
             <option value="">Ordination Status</option>
             <option value="deacon">Deacon</option>
             <option value="asst_pastor">Assistant Pastor</option>
@@ -224,7 +224,6 @@
         </div>
 
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error oridinationYearError"></p>
           <input 
             type="number"
@@ -232,12 +231,12 @@
             min="1960"
             class="form-control" 
             name="last_ordained_year" 
-            placeholder="Year Last Ordination" required>
+            placeholder="Year Last Ordination">
         </div>
 
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error workerYearError"></p>
+          <span style="color: red">*</span>
           <input 
             type="number"
             max="2020"
@@ -248,8 +247,8 @@
         </div>
 
         <div class="form-group col-md-4">
-          <span style="color: red">*</span>
           <p class="error rccgYearError"></p>
+          <span style="color: red">*</span>
           <input 
             type="number"
             max="2020"
