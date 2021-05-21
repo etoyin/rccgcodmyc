@@ -4,7 +4,7 @@
   "description": "A site for COD members info",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon"
   },
   "keywords": [
     "speech",
@@ -34,6 +34,6 @@
     "multer-s3": "^2.9.0",
     "mysql": "^2.18.1",
     "node-localstorage": "^2.1.6",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.7"
   }
 }

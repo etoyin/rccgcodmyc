@@ -102,7 +102,7 @@ module.exports = {
       return res.status(200).json({
         success: 1,
         data: results,
-        message: "Database connection error"
+        message: "Registration Successful"
       });
     });
     

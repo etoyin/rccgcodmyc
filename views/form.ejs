@@ -6,310 +6,311 @@
     <% } %>
     
     
-    <form style="padding-top: 20px;" class="add-player-form" action="" method="post" enctype="multipart/form-data">
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <p class="error nameError"></p>
-          <span style="color: red">*</span>
-          <input type="text" class="form-control" name="name" value="<%=data.name%>" placeholder="Full Name" required>
-        </div>
-        <div class="form-group col-md-4">
-          <p class="error addressError"></p>
-          <span style="color: red">*</span>
-          <input type="text" class="form-control" name="address" placeholder="Address" required>
-        </div>
-        <div class="form-group col-md-4">
-          <p class="error numberError"></p>
-          <span style="color: red">*</span>
-          <input type="number" class="form-control" name="number" placeholder="Phone Number" required>
-        </div>
-        <div class="form-group col-md-4">
-          <p class="error emailError"></p>
-          <span style="color: red">*</span>
-          <input type="email" class="form-control" name="email" placeholder="Email" required>
-        </div>
-        <div class="form-group col-md-4">
-          <p class="error passwordError"></p>
-          <span style="color: red">*</span>
-          <input type="password" class="form-control" name="password" placeholder="Password" required>
-        </div>
-
-        <div class="form-group col-md-4">
-          <p class="error passwordConfirmError"></p>
-          <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
-        </div>
-
-        <div class="form-group col-md-4">
-          <p class="error dobError"></p>
-          <span style="color: red">*</span>
-          <input 
-            onfocus="(this.type='date')" 
-            onblur="(this.type='text')"
-            class="form-control" 
-            name="dob"
-            placeholder="Date of Birth" required />
-        </div>
-
-        <!-----------------Gender------------------->
-        
-        <div class="form-group col-md-4">
-          <p class="error genderError"></p>
-          <span style="color: red">*</span>
-          <select type="text" class="form-control" name="gender" required>
-            <option value="">Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-
-        <!-----------------Marital Status------------------->
-
-        <div class="form-group col-md-4">
-          <p class="error maritalError"></p>
-          <span style="color: red">*</span>
-          <select type="text" class="form-control" name="marital_status" required>
-            <option value="">Marital Status</option>
-            <option value="single">Single</option>
-            <option value="married">Married</option>
-            <option value="divorced">Divorced</option>
-            <option value="widow(er)">Widow(er)</option>
-          </select>
-        </div>
-        
-        <div class="form-group col-md-4">
-          <p class="error educationError"></p>
-          <span style="color: red">*</span>
-          <select type="text" class="form-control" name="education" required>
-            <option value="">Select Education Qualification</option>
-            <option value="PhD">PhD</option>
-            <option value="Masters">Masters</option>
-            <option value="PGD">PGD</option>
-            <option value="Bachelor">Bachelor</option>
-            <option value="HND">HND</option>
-            <option value="OND">OND</option>
-            <option value="Trade Certificate">Trade Certificate</option>
-            <option value="SSCE">SSCE</option>
-            <option value="BECE">BECE</option>
-          </select>
-        </div>
-
-        <div class="form-group col-md-4">
-          <p class="error baptismError"></p>
-          <span style="color: red">*</span>
-          <select type="text" class="form-control" name="water_baptism" required>
+    <div id="myNav" class="overlay_loader">
+  
+      <div class="overlay_loader_content">
+        <img id="loader" src="/images/display_img/logo.jpg" alt="">
+        <p>loading</p>
+      </div>
+    </div>
+    
+    <div id="" class="overlay_success">
+  
+      <div class="overlay_success_content text-center">
+        <i class="fa fa-smile-o success" style="font-size:36px; margin-bottom: 10px; color: #43ee7c"></i>
+        <p>Registration Successful</p>
+        <button id="successOk" style="width: 50px; background-color: #bbb" class="btn">Ok</button>
+      </div>
+    </div>
+    <form id="regForm" action="">
+      <h4>Register here</h4>
+      <!-- One "tab" for each step in the form: -->
+      <!-- <div class="tab"><h5 style="margin-top: 20px;">Step 1:</h5>
+        <p class="errorField" errorField="fname">error</p>
+        <p><input placeholder="Full name..." class="required input" id="fname"></p>
+        <p class="errorField" errorField="address">error</p>
+        <p><input placeholder="Address..." class="required input" id="address"></p>
+        <p class="errorField" errorField="phone">error</p>
+        <p><input type="number" placeholder="Phone Number..." class="required input" id="phone" class="required"></p>
+            <p class="errorField" errorField="dob">error</p>
+        <p><input onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date of Birth..." class="required input" id="dob" class="required"></p>
+            <p class="errorField" errorField="gender">gender</p>
+        <p>
+          <select id="gender" errorField="gender" class="required input">
+              <option value="">Select Gender</option>
+                 <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+        </p>
+        <p>
+          <p class="errorField" errorField="marital_status">Input Marital status</p>
+          <select id="marital_status" errorField="marital_status" class="input required">
+              <option value="">Select Marital Status</option>
+                 <option value="single">Single</option>
+              <option value="married">Married</option>
+              <option value="divorced">Divorced</option>
+              <option value="widow(er)">Widow(er)</option>
+            </select>
+        </p>
+        <p>
+          <p class="errorField" errorField="education">Input Qualification</p>
+          <select id="education" errorField="education" class="input required">
+                <option value="">Select Education Qualification</option>
+                <option value="PhD">PhD</option>
+                <option value="Masters">Masters</option>
+                <option value="PGD">PGD</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="HND">HND</option>
+                <option value="OND">OND</option>
+                <option value="NCE">NCE</option>
+                <option value="Trade Certificate">Trade Certificate</option>
+                <option value="SSCE">SSCE</option>
+                <option value="BECE">BECE</option>
+            </select>
+        </p>
+      </div>
+      <div class="tab"><h5 style="margin-top: 20px;">Step 2:</h5>
+        <p>
+          <p class="errorField" errorField="water_baptism">Input Qualification</p>
+          <select type="text" errorField="water_baptism" id="water_baptism" class="input required">
             <option value="">Water Baptism</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
-        </div>
-
-        <!-----------------Church Training----------------------->
-        <p class="error trainingError"></p>
-        <ul style="padding-left: 40px" class="training form-group col-md-4">
-          <label class="label">Church Training Obtained<span style="color: red">*</span></label>
-          <li class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Believer's Class">Believer's Class
-            </label>
-          </li>
-          <li class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Baptismal Class">Baptismal Class
-            </label>
-          </li>
-          <li class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Workers-in-training">Workers-in-trainin
-            </label>
-          </li>
-          <li class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="School of Disciples">School of Disciples
-            </label>
-          </li>
-          <li class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Bible College">Bible College
-            </label>
-          </li>
-        </ul>
-
-        <!-----------------Departments----------------------->
-        <p class="error departmentError"></p>
-        <div style="padding-left: 40px" class="form-group departments col-md-4">
-          <label class="label">Department(s) <span style="color: red">*</span></label>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Technical">Technical
-            </label>
+        </p>
+        <p>
+          <p class="errorField" errorField="training">Check at least one Church training</p>
+          <div errorField="training" id="training" class="training required input" data-training="trainings" data-type="checkbox">
+            <label class="label">Church Training Obtained</label>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="believer" value="Believer's Class">
+              <label class="custom-control-label" for="believer" >
+                Believer's Class
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="baptC" value="Baptismal Class">
+              <label class="custom-control-label" for="baptC">
+                Baptismal Class
+              </label>
+            </div> 
+            <div class="training input custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="workC" value="Workers-in-training">
+              <label class="custom-control-label" for="workC">
+                Workers-in-trainin
+              </label>
+            </div>
+            <div class="training input custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="sodC" value="School of Disciples">
+              <label class="custom-control-label" for="sodC">
+                School of Disciples
+              </label>
+            </div>
+            <div class="training input custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="bible" value="Bible College">
+              <label class="custom-control-label" for="bible">
+                Bible College
+              </label>
+            </div>
           </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Sanitation">Sanitation
-            </label>
+        </p>
+      </div>
+      <div class="tab"><h5 style="margin-top: 20px;">Step 3:</h5>
+        <p>
+          <p class="errorField" errorField="departments">Check at least one Department</p>
+          <div errorField="departments" id="department" class="departments required input" data-department="departments" data-type="checkbox">
+            <label class="label">Department(s)</label>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="tech" value="Technical">
+              <label class="custom-control-label" for="tech">
+                Technical
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="san" value="Sanitation">
+              <label class="custom-control-label" for="san">
+                Sanitation
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="dra" value="Drama">
+              <label class="custom-control-label" for="dra">
+                Drama
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="cho" value="Choir">
+              <label class="custom-control-label" for="cho">
+                Choir
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="teen" value="Teens and Children">
+              <label class="custom-control-label" for="teen">
+                Teens/Children
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="sun" value="Sunday School">
+              <label class="custom-control-label" for="sun">
+                Sunday School
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="secu" value="Security">
+              <label class="custom-control-label" for="secu">
+                Security
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="prot" value="Protocol">
+              <label class="custom-control-label" for="prot">
+                Protocol
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="wel" value="Welfare">
+              <label class="custom-control-label" for="wel">
+                Welfare
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="info" value="Information Bureau">
+              <label class="custom-control-label" for="info">
+                Information Bureau
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="ush" value="Ushering">
+              <label class="custom-control-label" for="ush">
+                Ushering
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="med" value="Media">
+              <label class="custom-control-label" for="med">
+                Media
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="pray" value="Prayer">
+              <label class="custom-control-label" for="pray">
+                Prayer
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="sig" value="Sign Language">
+              <label class="custom-control-label" for="sig">
+                Sign Language
+              </label>
+            </div>
           </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Drama">Drama
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Choir">Choir
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="Teens/Children" value="Teens and Children">Teens/Children
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Sunday School">Sunday School
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Security">Security
-            </label>
-          </div>
-        </div>
-        <div style="padding-left: 40px" class="form-group departments col-md-4">
-          <label style="visibility: hidden;"></label>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Protocol">Protocol
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Welfare">Welfare
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Information Bureau">Information Bureau
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Ushering">Ushering
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Media">Media
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Prayer">Prayer
-            </label>
-          </div>
-          <div class="">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="Sign Language">Sign Language
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group col-md-4">
-          <p class="error ordinationStatusError"></p>
-          <select type="text" class="form-control" name="ordination">
+        </p>
+      </div>
+      <div class="tab"> <h5 style="margin-top: 20px;">Step 4:</h5>
+        <p class="">
+          <select type="text" class="input" id="ordination">
             <option value="">Ordination Status</option>
             <option value="deacon">Deacon</option>
             <option value="asst_pastor">Assistant Pastor</option>
             <option value="pastor">Pastor</option>
           </select>
-        </div>
+        </p>
 
-        <div class="form-group col-md-4">
-          <p class="error oridinationYearError"></p>
+        <p class="">
           <input 
             type="number"
-            max="2020"
+            max="2021"
             min="1960"
-            class="form-control" 
-            name="last_ordained_year" 
+            class="input" 
+            id="last_ordained_year" 
             placeholder="Year Last Ordination">
-        </div>
+        </p>
 
-        <div class="form-group col-md-4">
-          <p class="error workerYearError"></p>
-          <span style="color: red">*</span>
+        <p class="">
+          <p class="errorField" errorField="year_became_worker">Input a year</p>
           <input 
+            errorField="year_became_worker"
             type="number"
-            max="2020"
+            max="2021"
             min="1960"
-            class="form-control" 
-            name="year_became_worker" 
-            placeholder="Year Became Worker" required>
-        </div>
+            class="input required" 
+            id="year_became_worker"
+            placeholder="Year Became Worker *">
+        </p>
 
-        <div class="form-group col-md-4">
-          <p class="error rccgYearError"></p>
-          <span style="color: red">*</span>
+        <p class="">
+          <p class="errorField" errorField="year_joined_rccg">Input a year</p>
           <input 
+            errorField="year_joined_rccg"
             type="number"
-            max="2020"
+            max="2021"
             min="1960"
-            class="form-control" 
-            name="year_joined_rccg" 
-            placeholder="Year Joined RCCG" required>
-        </div>
-
-        <div class="form-group col-md-4 position-div">
-          <p class="error positionError"></p>
-          <span style="color: red">*</span>
-          <select id="position-input" type="text" class="form-control" name="position" required>
+            class="input required" 
+            id="year_joined_rccg" 
+            placeholder="Year Joined RCCG *">
+        </p>
+        <div class="position-parent">
+        <p >
+          <p class="errorField" errorField="position">Select a position</p>
+          <select id="position" errorField="position" type="text" class="input position required">
             <option value="">Current Position in Church</option>
             <option value="Worker">Worker</option>
             <option value="HOD">HOD</option>
             <option value="Minister">Minister</option>
             <option value="Pastorate">Pastorate</option>
           </select>
+        </p>
         </div>
 
-        <div class="form-group col-md-8">
+        <p class="">
           <textarea 
-            class="form-control" 
+            class="input" 
             rows="9" 
             name="other" 
             id="other" 
             placeholder="Other Information"></textarea>
+        </p>
+      </div>-->
+
+      <div class="tab"><h5 style="margin-top: 20px;">Step 5:</h5>
+        <p class="errorField" errorField="email">Enter Email</p>
+        <p><input class="input required" errorField="email" placeholder="Email..." id="email"></p>
+        <p class="errorField" errorField="password">Enter password more than 6 digits</p>
+        <p><input class="input required" errorField="password" placeholder="Password..." id="password" type="password"></p>
+        <p class="errorField" errorField="confirm_password">Password do not match</p>
+        <p><input class="input required" errorField="confirm_password" placeholder="Confirm Password..." id="confirm_password" type="password"></p>
+      </div>
+      <div class="tab"><h5 style="margin-top: 20px;">Step 6 Upload Pictures:</h5>
+        <label>Upload Profile Picture</label>
+        <p class="errorField" errorField="avatar">Profile picture not uploade or more than 1000kb</p>
+        <p><input type="file" errorField="avatar" data-avatar="avatar" placeholder="Upload your Picture" id="avatar" class="input required"></p>
+        <label>Upload Baptismal Certificate</label>
+        <p class="errorField" errorField="bapt">Profile picture not uploade or more than 1000kb</p>
+        <p><input type="file" errorField="bapt" data-bapt="bapt" placeholder="Upload Baptismal Certificate" id="bapt" class="input notRequired"></p>
+        <label>Upload Workers' Certificate</label>
+        <p class="errorField" errorField="worker">Profile picture not uploade or more than 1000kb</p>
+        <p><input type="file" errorField="worker" data-worker="worker" placeholder="Upload Workers-in-training Certificate" id="worker" class="input notRequired"></p>
+        <label>Upload SOD Certificate</label>
+        <p class="errorField" errorField="sod">Profile picture not uploade or more than 1000kb</p>
+        <p><input type="file" errorField="sod" data-sod="sod" placeholder="Upload SOD Certificate" id="sod" class="input notRequired"></p>
+        <label>Upload Bible College Certificate</label>
+        <p class="errorField" errorField="bibleCol">Profile picture not uploade or more than 1000kb</p>
+        <p><input type="file" errorField="bibleCol" data-bibleCol="bibleCol" placeholder="Upload Bible College Certificate" id="bibleCol" class="input notRequired"></p>
+      </div>
+      <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="button" id="prevBtn">Previous</button>
+          <button type="button" id="nextBtn">Next</button>
+          <button type="button" id="submitBtn">Submit</button>
         </div>
       </div>
-      <div class="form-row">
-        <div class="col-md-3">
-          <p class="error imageError"></p>
-          <label for="player-img"><b>Upload photo</b><span style="color: red">*</span></label><br>
-          <input type="file" name="image" id="profile" class="image" required>
-        </div>
-        <div class="col-md-3">
-          <p class="error imageError"></p>
-          <label for="player-img"><b>Upload Baptismal Certificate</b></label><br>
-          <input type="file" name="image" id="bapt" class="image" required>
-        </div>
-        <div class="col-md-3">
-          <p class="error imageError"></p>
-          <label for="player-img"><b>Upload Workers-in-training</b></label><br>
-          <input type="file" name="image" id="wt" class="image" required>
-        </div>
-        <div class="col-md-3">
-          <p class="error imageError"></p>
-          <label for="player-img"><b>Upload SOD Certificate</b></label><br>
-          <input type="file" name="image" id="sod" class="image" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-6">
-          <p class="error imageError"></p>
-          <label for="player-img"><b>Upload Bible College</b></label><br>
-          <input type="file" name="image" id="bc" class="image" required>
-        </div>
-        <div class="col-md-6">
-          <button type="submit" id='submit-form' class="btn btn-primary float-right">Submit</button>
-        </div>
+      <!-- Circles which indicates the steps of the form:-->
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
       </div>
     </form>
     <hr />
