@@ -32,15 +32,15 @@ nav{
   padding-top: 20px;
 }
 .flex-container > div{
-  background-color: #f1f1f1;
-  width: 250px;
+  background-color: #fff;
+  width: 200px;
   margin: 10px;
   text-align: center;
   line-height: 75px;
   padding: 10px;
-  border: 1px solid #999;
-  border-radius: 20px;
-  
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px 0px #888888;
 }
 .error{
   color: red;
@@ -54,20 +54,28 @@ a:link, a:visited{
   color: #444;
 }
 .picp_img{
-  height: 200px;
-  width: 230px;
-}
-.profile_img{
-  height: 200px;
-  width: 230px;
-}
-.pastor_img{
-  height: 170px;
-  width: 170px;
-}
-.hod_img {
   height: 150px;
   width: 150px;
+  border-radius: 50%;
+}
+a>h5{
+  margin-top: 10px;
+  font-size: 15px !important;
+}
+.profile_img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.pastor_img{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+.hod_img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
 }
 .table-div{
   width: 80%;
@@ -191,7 +199,7 @@ input.invalid, select.invalid {
 }
 
 button {
-  background-color: #04AA6D;
+  background-color: #2578cc;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -217,7 +225,7 @@ button:hover {
   height: 15px;
   width: 15px;
   margin: 0 2px;
-  background-color: #bbbbbb;
+  background-color: #2578cc;
   border: none;  
   border-radius: 50%;
   display: inline-block;
@@ -297,7 +305,9 @@ button:hover {
   table{
     width: 100%
   }
-  
+  #regForm{
+    width: 100%
+  }
   /* Hide table headers (but not display: none;, for accessibility) */
   thead tr, caption { 
     position: absolute;

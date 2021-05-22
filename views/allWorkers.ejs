@@ -46,7 +46,7 @@
         }).forEach((x, i) => {%>
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
-              <img src='<%=x.image_name.split(",")[0]%>' class="picp_img rounded-circle" />
+              <img src='<%=x.image_name.split(",")[0]%>' class="picp_img" />
               <h5>
                 <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
               </h5>
@@ -63,7 +63,7 @@
         }).forEach((x, i) => {%>
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
-              <img src='<%=x.image_name.split(",")[0]%>' class="picp_img rounded-circle" />
+              <img src='<%=x.image_name.split(",")[0]%>' class="picp_img" />
               <h5>
                 <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
               </h5>
@@ -80,7 +80,7 @@
         }).forEach((x, i) => {%>
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
-              <img src='<%=x.image_name.split(",")[0]%>' class="pastor_img rounded-circle" />
+              <img src='<%=x.image_name.split(",")[0]%>' class="pastor_img" />
               <h5>
                 <%= 
                   (x.gender === 'male' ? 

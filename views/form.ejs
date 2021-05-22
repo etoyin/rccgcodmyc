@@ -25,16 +25,16 @@
     <form id="regForm" action="">
       <h4>Register here</h4>
       <!-- One "tab" for each step in the form: -->
-      <!-- <div class="tab"><h5 style="margin-top: 20px;">Step 1:</h5>
-        <p class="errorField" errorField="fname">error</p>
-        <p><input placeholder="Full name..." class="required input" id="fname"></p>
-        <p class="errorField" errorField="address">error</p>
+      <div class="tab"><h5 style="margin-top: 20px;">Step 1:</h5>
+        <p class="errorField" errorField="fname">Enter Full name</p>
+        <p><input placeholder="Full name..." class="required input" id="name"></p>
+        <p class="errorField" errorField="address">Enter Address</p>
         <p><input placeholder="Address..." class="required input" id="address"></p>
-        <p class="errorField" errorField="phone">error</p>
+        <p class="errorField" errorField="phone">Enter Correct phone must be 11 digits and above</p>
         <p><input type="number" placeholder="Phone Number..." class="required input" id="phone" class="required"></p>
-            <p class="errorField" errorField="dob">error</p>
+            <p class="errorField" errorField="dob">Enter correct data format</p>
         <p><input onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date of Birth..." class="required input" id="dob" class="required"></p>
-            <p class="errorField" errorField="gender">gender</p>
+            <p class="errorField" errorField="gender">Select your gender</p>
         <p>
           <select id="gender" errorField="gender" class="required input">
               <option value="">Select Gender</option>
@@ -261,6 +261,7 @@
             <option value="Pastorate">Pastorate</option>
           </select>
         </p>
+        <p class="hodDepartment-parent"></p>
         </div>
 
         <p class="">
@@ -271,7 +272,7 @@
             id="other" 
             placeholder="Other Information"></textarea>
         </p>
-      </div>-->
+      </div>
 
       <div class="tab"><h5 style="margin-top: 20px;">Step 5:</h5>
         <p class="errorField" errorField="email">Enter Email</p>
@@ -307,6 +308,8 @@
       </div>
       <!-- Circles which indicates the steps of the form:-->
       <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
         <span class="step"></span>
         <span class="step"></span>
         <span class="step"></span>
