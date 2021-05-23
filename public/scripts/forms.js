@@ -159,7 +159,7 @@ $(document).ready(function(){
       fd.append('training', state.training);
       fd.append('position', state.position);
       fd.append('hodDepartment', state.hodDepartment);
-      fd.append('departments', state.departments);
+      fd.append('departments', state.department);
       fd.append('year_became_worker', state.year_became_worker);
       fd.append('year_joined_rccg', state.year_joined_rccg);
       fd.append('last_ordained_year', state.last_ordained_year);
