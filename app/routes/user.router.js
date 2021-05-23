@@ -14,6 +14,7 @@ const {
   logout,
   createAdmin,
   getAll,
+  getDashboard,
   renderProfile,
   getFormsForUpdate,
   updateUser,
@@ -39,6 +40,7 @@ router.post("/admin_login", adminLogin);
 router.post("/logout", logout);
 router.get("/profile/:id", renderProfile);
 router.post("/profile/:id",checkToken, getUserById);
+router.get("/dashboard", getDashboard);
 router.patch("/update", checkToken, upload.array('image'), updateUser);
 //router.delete("/delete", checkToken, deleteUser);
 //router.post("/login", login);

@@ -11,6 +11,7 @@ $(document).ready(() => {
   });
   let adminLocalStorage = JSON.parse(localStorage.getItem('user-data'));
   if(adminLocalStorage && adminLocalStorage.genMessage == 'LoggedIn'){
+    $('.dashboard').append(`<a class="nav-link dashboard" href="/dashboard">Dashboard</a>`);
     $('.auth').append(`<a class="nav-link logout" >Logout</a>`);
   }
   else{
@@ -50,7 +51,7 @@ $(document).ready(() => {
       localStorage.setItem('user-data', JSON.stringify(res));
       //console.log(JSON.parse(localStorage.getItem('user-data')));
       if(res.message == 'Login successfully'){
-        window.location.replace('/all-workers');
+        window.location.replace('/dashboard');
       }
       else{
         $('.error').text(`Wrong Username or Password`);

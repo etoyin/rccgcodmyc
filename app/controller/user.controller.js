@@ -60,6 +60,28 @@ module.exports = {
       data: ''
     });
   },
+  getDashboard: (req, res) => {
+    getUsers((error, results) => {
+      if(error){
+        console.log(error);
+      }
+
+      if(!results){
+        message = 'No record found';
+        res.render('dashboard.ejs', {
+          title: 'Dashboard',
+          message: message,
+          data: results
+        });
+      }
+      //results[0].password = undefined;
+      res.render('dashboard.ejs', {
+        title: 'Dashboard',
+        data: results,
+        message: 'Good'
+      });
+    })
+  },
   getForms: (req, res) => {
     let message = '';
     res.render('form.ejs', {

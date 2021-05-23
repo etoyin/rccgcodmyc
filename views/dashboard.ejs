@@ -1,0 +1,64 @@
+<%- include ('partials/header.ejs'); %>
+  <% if(data.length > 0){  %>
+    <div>
+      <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
+
+      <h4 class="text-center">Welcome</h4>
+      <div class="flex-container-2">
+        <% let pastorate = data.filter((data) => {
+          return data.position == 'Pastorate'; 
+        }).length;
+            let ministers = data.filter((data) => {
+          return data.position == 'Minister'; 
+        }).length;
+            let hod = data.filter((data) => {
+          return data.position == 'HOD'; 
+        }).length;
+            let worker = data.filter((data) => {
+          return data.position == 'Worker'; 
+        }).length;
+        
+        %>
+          <div style="text-align: left; padding: 30px">
+            <a class="eachMember">
+              <h5 >
+                Total Number of Registered <b>Pastors</b>: <%= pastorate%>
+              </h5>
+              <div class='divider'></div>
+            </a>
+          </div>
+          <div style="text-align: left; padding: 30px">
+            <a class="eachMember">
+              <h5 >
+                Total Number of Registered <b>Ministers</b>: <%= ministers%>
+              </h5>
+              <div class='divider'></div>
+            </a>
+          </div>
+          <div style="text-align: left; padding: 30px">
+            <a class="eachMember">
+              <h5 >
+                Total Number of Registered <b>HODs</b>: <%= hod%>
+              </h5>
+              <div class='divider'></div>
+            </a>
+          </div>
+          <div style="text-align: left; padding: 30px">
+            <a class="eachMember">
+              <h5 >
+                Total Number of Registered <b>Workers</b>: <%= worker%>
+              </h5>
+              <div class='divider'></div>
+            </a>
+          </div>
+      </div>
+
+      
+  <%} else {%>
+    <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
+    <h3 class="text-center">No Records found!</h3>
+  <%}%>
+</div> 
+</div>
+</body>
+</html>

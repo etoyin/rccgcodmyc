@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body, html {
   height: 100%;
-  font-family: 'Kufam', cursive;
+  /* font-family: 'Kufam', cursive; */
+  font-family: 'Montserrat', sans-serif;
 }
 nav{
   border-bottom: 1px solid #999;
@@ -42,6 +44,30 @@ nav{
   border-radius: 10px;
   box-shadow: 0px 0px 7px 0px #888888;
 }
+.flex-container-2{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+.divider{
+  background: #ddd;
+  height: 2px
+}
+.flex-container-2 > div{
+  background-color: #fff;
+  width: 400px;
+  margin: 0px 40px 30px 40px;
+  text-align: center;
+  line-height: 75px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px 0px #888888;
+}
+.flex-container-2 > div > a >h5 {
+  font-size: 20px !important;
+}
 .error{
   color: red;
   font-size: 10px;
@@ -65,6 +91,9 @@ a>h5{
 h4, h5{
   margin-top: 10px;
   font-size: 20px 
+}
+#department_header{
+  font-size: 25px
 }
 .profile_img{
   height: 150px;
