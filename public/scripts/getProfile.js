@@ -273,7 +273,7 @@ $(document).ready(() => {
           break;
         case "gender":
           $(".inputDiv").html(`
-              <select id="editInput" errorField="gender" class="required input">
+              <select id="editInput" errorField="gender" class="form-control">
                 <option value="">Select Gender</option>
                   <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -282,7 +282,7 @@ $(document).ready(() => {
           break;
         case "marital_status":
           $(".inputDiv").html(`
-              <select id="editInput" errorField="marital_status" class="input required">
+              <select id="editInput" errorField="marital_status" class="form-control">
                 <option value="">Select Marital Status</option>
                   <option value="single">Single</option>
                 <option value="married">Married</option>
@@ -293,7 +293,7 @@ $(document).ready(() => {
           break;
         case "education":
           $(".inputDiv").html(`
-              <select id="editInput" errorField="education" class="input required">
+              <select id="editInput" errorField="education" class="form-control">
                 <option value="">Select Education Qualification</option>
                 <option value="PhD">PhD</option>
                 <option value="Masters">Masters</option>
@@ -310,7 +310,7 @@ $(document).ready(() => {
           break;
         case "water_baptism":
           $(".inputDiv").html(`
-              <select type="text" errorField="water_baptism" id="editInput" class="input required">
+              <select type="text" errorField="water_baptism" id="editInput" class="form-control">
                 <option value="">Water Baptism</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
@@ -466,7 +466,7 @@ $(document).ready(() => {
           break;
         case "ordination":
           $(".inputDiv").html(`
-            <select type="text" class="input" id="editInput">
+            <select type="text" class="form-control" id="editInput">
               <option value="">Ordination Status</option>
               <option value="deacon">Deacon</option>
               <option value="asst_pastor">Assistant Pastor</option>
@@ -480,7 +480,7 @@ $(document).ready(() => {
             type="number"
             max="2021"
             min="1960"
-            class="input" 
+            class="form-control" 
             id="editInput" 
             placeholder="Year Last Ordination">
           `);
@@ -492,7 +492,7 @@ $(document).ready(() => {
             type="number"
             max="2021"
             min="1960"
-            class="input required" 
+            class="form-control" 
             id="editInput"
             placeholder="Year Became Worker *">
           `);
@@ -504,14 +504,14 @@ $(document).ready(() => {
             type="number"
             max="2021"
             min="1960"
-            class="input required" 
+            class="form-control" 
             id="editInput" 
             placeholder="Year Joined RCCG *">
           `)
           break;
         case "position":
           $(".inputDiv").html(`
-            <select id="editInput" errorField="position" type="text" class="input position required">
+            <select id="editInput" errorField="position" type="text" class="form-control position required">
               <option value="">Current Position in Church</option>
               <option value="Worker">Worker</option>
               <option value="HOD">HOD</option>
@@ -521,7 +521,7 @@ $(document).ready(() => {
           `)
           break;
         default:
-          $(".inputDiv").html(`<input type="text" class="form-control" >`)
+          $(".inputDiv").html(`<input type="text" id="editInput" class="form-control" >`)
           break;
       }
 

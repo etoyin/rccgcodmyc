@@ -12,6 +12,9 @@ $(document).ready(() => {
   let adminLocalStorage = JSON.parse(localStorage.getItem('user-data'));
   if(adminLocalStorage && adminLocalStorage.genMessage == 'LoggedIn'){
     $('.dashboard').append(`<a class="nav-link dashboard" href="/dashboard">Dashboard</a>`);
+    if(!adminLocalStorage.admin){
+      $('.profilePage').append(`<a class="nav-link profilePage" href="/profile/${adminLocalStorage.data.id}">Profile</a>`);
+    }
     $('.auth').append(`<a class="nav-link logout" >Logout</a>`);
   }
   else{

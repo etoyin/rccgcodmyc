@@ -16,6 +16,7 @@ const {
   updatePassword,
   updateImage,
   deleteUser,
+  getAllWithDepartments,
   getUserByEmail,
   getAdminEmail,
   createAdmin,
@@ -43,6 +44,29 @@ module.exports = {
         title: 'All Workers in COD',
         data: results,
         message: 'Good'
+      });
+    })
+  },
+  getAllWithDepartments: (req, res) => {
+    getAllWithDepartments((error, results) => {
+      if(error){
+        console.log(error);
+      }
+
+      if(!results){
+        message = 'No record found';
+        res.status(404).json({
+          success: false,
+          message,
+          data: results
+        });
+      }
+      //results[0].password = undefined;
+      res.render('downloadDataInSheet.ejs', {
+        data: results,
+        message: 'Good',
+        success: true,
+        title: 'RCCGCODMYC | Download All',
       });
     })
   },

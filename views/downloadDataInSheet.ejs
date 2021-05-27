@@ -1,0 +1,50 @@
+<%- include ('partials/header.ejs'); %>
+  <% if(data.length > 0){  %>
+    <div>
+
+      <h4 class="text-center">All Worker</h4>
+      <div class="">
+            <button style="display: block; margin: 20px;" id="download" class="btn btn-success">Download on Spreadsheet</button>
+            <!-- <br> -->
+            <table id="table2excel" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                      <th scope="col">Serial Number</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Departments</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% data.forEach((x, i) => {%>
+                    <tr>
+                        <td> <%= i+1 %></td>
+                        <td> <%= x.name %></td>
+                        <td> <%= x.departments %></td>
+                    </tr>
+                    <%})%>
+                  </tbody>
+            </table>
+      </div>
+    </div>
+  <%} else {%>
+    <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
+    <h3 class="text-center">No Records found!</h3>
+  <%}%>
+</div> 
+</div>
+<script>
+    $(document).ready(function(){
+        $("#download").click(function(){
+            $("#table2excel").table2excel({
+                // exclude CSS class
+                exclude:".noExl",
+                name:"Worksheet Name",
+                filename:"AllRegistered Workers",//do not include extension
+                fileext:".xls", // file extension
+                preserveColors:true
+            });
+        });
+    })
+</script>
+</body>
+</html>

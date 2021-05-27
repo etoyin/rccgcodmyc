@@ -14,6 +14,7 @@ const {
   logout,
   createAdmin,
   getAll,
+  getAllWithDepartments,
   getDashboard,
   renderProfile,
   getFormsForUpdate,
@@ -33,6 +34,7 @@ router.get("/register", getForms);
 router.get("/pastors", getPastors);
 router.get("/departments", getEachDepartment);
 router.get("/all-workers", getAll);
+router.get("/all-workersWithDepartments", getAllWithDepartments);
 router.get("/update", getFormsForUpdate);
 router.post("/createAdmin", createAdmin);
 router.get("/login", getLoginForm);

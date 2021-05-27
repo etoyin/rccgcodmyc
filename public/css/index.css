@@ -86,11 +86,11 @@ a:link, a:visited{
   border-radius: 50%;
 }
 a>h5{
-  margin-top: 10px;
+  /* margin-top: 10px; */
   font-size: 15px !important;
 }
 h4, h5{
-  margin-top: 10px;
+  /* margin-top: 10px; */
   font-size: 20px 
 }
 #department_header{
@@ -572,6 +572,11 @@ button:hover {
   }
 }
 
+@media screen and (max-width: 400px) {
+  .modal_content_2, .modal_content_3{
+    width: 90%;
+  }
+}
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 

@@ -35,7 +35,7 @@ $(document).ready(() => {
       localStorage.setItem('user-data', JSON.stringify(res));
       //console.log(JSON.parse(localStorage.getItem('user-data')));
       if(res.genMessage == 'LoggedIn'){
-        window.location.replace('/all-workers');
+        window.location.replace('/dashboard');
       }
       else{
         $('.error').text(`Wrong Username or Password`);

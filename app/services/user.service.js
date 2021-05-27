@@ -158,6 +158,22 @@ module.exports = {
         }
     )
   },
+  getAllWithDepartments: (callback) => {
+    pool.query(
+      `
+      select
+        name, departments
+        from user
+      `,
+        [],
+        (error, results, field) => {
+          if(error){
+            return callback(error);
+          }
+          return callback(null, results)
+        }
+    )
+  },
   getUserById: (id, callback) => {
     pool.query(
       `select 
