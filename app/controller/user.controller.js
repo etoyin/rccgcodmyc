@@ -313,9 +313,12 @@ module.exports = {
           message: "Invalid email or password"
         });
       }
-      const passwordCorrect = compareSync(body.oldPassword, results.password);
+      const passwordCorrect = compareSync(body.old, results.password);
       
       if(passwordCorrect){
+        const body = req.body;
+        const salt = genSaltSync(10);
+        body.newP = hashSync(body.newP, salt);
         updatePassword(body, (error, results) => {
           if(error){
             console.log(eror);

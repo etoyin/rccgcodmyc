@@ -276,7 +276,7 @@ module.exports = {
   },
   updatePassword: (data, callback) => {
     const {
-      password,
+      newP,
       id
     } = data;
     pool.query(
@@ -284,7 +284,7 @@ module.exports = {
         password=?
         where id=?`,
         [
-          password,
+          newP,
           id
         ],
         (error, results, field) => {
