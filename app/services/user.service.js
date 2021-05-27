@@ -14,8 +14,8 @@ module.exports = {
       address, 
       number,
       password,
-      email, 
-      gender, 
+      email,
+      gender,
       marital_status,
       dob,
       education,
@@ -85,6 +85,42 @@ module.exports = {
           }
 
           let user_id = results.insertId;
+          return callback(null, results)
+        }
+      )
+  },
+  updateImage: (req, newPath, callback) => {
+    const {name, type, id} = req.body;
+    let typeOfCert;
+    switch (type) {
+      case "baptismal":
+        typeOfCert = "baptismalCertificate"
+        break;
+      case "worker":
+        typeOfCert = "workersCertificate";
+        break;
+      case "sod":
+        typeOfCert = "sodCertificate";
+        break;
+      case "college":
+        typeOfCert = "collegeCertificate"
+        break;
+      default:
+        break;
+    }
+    pool.query(
+      `update user set 
+          ${typeOfCert}=?
+          where id=?
+        `,
+        [
+          newPath,
+          id
+        ],
+        (error, results, field) => {
+          if(error){
+            return callback(error);
+          }
           return callback(null, results)
         }
       )
@@ -165,12 +201,11 @@ module.exports = {
         }
     )
   },
-  updateUser: (data, newPath, callback) => {
+  updateUser: (data, callback) => {
     const {
       name, 
       address, 
       number,
-      password,
       email, 
       gender, 
       marital_status,
@@ -187,6 +222,7 @@ module.exports = {
       position,
       id
     } = data;
+    // console.log(data);
     let hodDepartment = (data.hodDepartment != undefined) ? data.hodDepartment: '';
     pool.query(
       `update user set
@@ -194,7 +230,6 @@ module.exports = {
         address=?, 
         number=?, 
         email=?,
-        password=?, 
         gender=?, 
         marital_status=?,
         dob=?,
@@ -204,7 +239,6 @@ module.exports = {
         year_became_worker=?,
         year_joined_rccg=?,
         other_comments=?,
-        image_name=?,
         departments=?,
         training=?,
         ordination=?,
@@ -216,7 +250,6 @@ module.exports = {
           address, 
           number, 
           email,
-          password,
           gender, 
           marital_status,
           dob,
@@ -226,12 +259,32 @@ module.exports = {
           year_became_worker,
           year_joined_rccg,
           other_comments,
-          newPath,
           departments,
           training,
           ordination,
           position,
           hodDepartment,
+          id
+        ],
+        (error, results, field) => {
+          if(error){
+            return callback(error);
+          }
+          return callback(null, results)
+        }
+    )
+  },
+  updatePassword: (data, callback) => {
+    const {
+      password,
+      id
+    } = data;
+    pool.query(
+      `update user set
+        password=?
+        where id=?`,
+        [
+          password,
           id
         ],
         (error, results, field) => {

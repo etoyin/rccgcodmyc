@@ -27,6 +27,7 @@ nav{
   background-repeat: no-repeat;
   background-size: auto;
 }
+
 .flex-container{
   display: flex;
   flex-wrap: wrap;
@@ -275,12 +276,34 @@ button:hover {
 }
 
 /* ////////////////////////////////////////Loader////////////////////////////////// */
-
+.overlay_upload_images{
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.overlay_upload_content{
+  position: relative;
+  top: 25%;
+  width: 50%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+  background-color: #fff;
+}
 .overlay_loader {
   height: 100%;
-  width: 0%;
+  width: 100%;
+  display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
   background-color: rgb(0,0,0);
@@ -302,7 +325,7 @@ button:hover {
   height: 100%;
   width: 0%;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
   background-color: rgb(0,0,0);
@@ -325,8 +348,229 @@ button:hover {
   border-radius: 5px;
 }
 /* //////////////////////////////////////////////////////////////////////// */
+/* ////////////////PROFILE/////////////////////////////////////////// */
 
+.cards-container {
+  width: 100%;
 
+  min-height: 80%;
+}
+.cards-results-map {
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 80%;
+  /* background-color: #04AA6D; */
+  /* align-items: flex-start; */
+}
+.cards-results-map > section.horizontal-center-column{
+  min-width: 300px;
+}
+.vertical-center-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.horizontal-center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-start {
+  align-items: flex-start;
+}
+.MainContent-header-second {
+  width: 100%;
+  min-height: 60px;
+  flex-wrap: wrap;
+}
+.MainContent-header-second > span {
+  margin: 10px;
+}
+.MainContent-header-second > p {
+  font-size: 20px;
+  font-weight: 800;
+
+  color: #ebba6c !important;
+}
+
+.profileCard {
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  background-color: #ffffff;
+}
+.profileCard span {
+  margin-bottom: 9px;
+}
+.profileCard p {
+  margin-bottom: 3px;
+}
+.midHeadText {
+  color: grey;
+  font-weight: 300;
+  font-size: 14px;
+}
+.midHeadText2 {
+  color: rgb(172, 172, 172);
+  font-weight: 50;
+  font-size: 13px;
+}
+.midHeadText4 {
+  color: rgb(221, 219, 219);
+  font-weight: 50;
+  font-size: 13px;
+  padding: 4px;
+}
+.midHeadText3 {
+  color: rgb(107, 106, 106);
+  font-weight: 400;
+  font-size: 14px;
+}
+.flex-space-betweeen {
+  justify-content: space-between;
+}
+.full-width {
+  width: 100%;
+}
+.profile-card-with-avater {
+  padding: 8px;
+  box-sizing: border-box;
+  width: 200px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  height: max-content;
+  background-color: #ffffff;
+  margin: 5px;
+}
+.profileImage {
+  height: 40px;
+  object-fit: contain;
+  border-radius: 100%;
+}
+.modal_ {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.modal_1 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.modal_content_2 {
+  margin: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  height: max-content;
+  background-color: #ffffff;
+  width: 50%;
+}
+.modal_content_3 {
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  height: max-content;
+  background-color: #ffffff;
+  width: 50%;
+  border-radius: 5px
+}
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-item-left {
+  /* background-color: #f1f1f1; */
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  /* background-color: #f1f1f1; */
+  padding: 10px;
+  flex: 50%;
+}
+
+.uploadFlexContainer{
+  justify-content: center;
+  padding: 30px;
+  width: 300px;
+  margin: auto;
+}
+/* .uploadFlexContainer > div {
+  background-color: #fff;
+  text-align: center;
+  line-height: 75px;
+  padding: 20px;
+} */
+.drop-zone{
+  border-radius: 5px;
+  box-shadow: 0px 0px 7px 0px #888888;
+  /* width: 200px; */
+  margin-top: 10px;
+  height: 300px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  border: 4px dashed #ddd;
+}
+.drop-zone--over{
+  border-style: solid ;
+}
+.drop-zone__input{
+  display: none;
+}
+.drop-zone__thumb{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #dddddd;
+  background-size: cover;
+  position: relative;
+}
+.drop-zone__thumb::after{
+  content: attr(data-label);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 760px){
+  .uploadFlexContainer{
+    width: 300px;
+    margin: auto;
+  }
+}
 
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
@@ -334,6 +578,11 @@ button:hover {
   /* Force table to not be like tables anymore */
   table, thead, tbody, th, td, tr { 
     display: block; 
+  }
+  .overlay_upload_content{
+    width: 90%;
+    top: 15%;
+    margin-top: 0px;
   }
   table{
     width: 100%

@@ -1,7 +1,102 @@
 <%- include ('partials/header.ejs'); %>
 
   <% let x = data[0];%>
+
+
+<!-- =-------------------------------------Change Password Overlay------------------------ -->
+  <section id="changePasswordOverlay" class="modal_1 horizontal-center-column">
+    <div style=" padding-top: 10px"
+      class="modal_content_3 horizontal-center-column flex-space-betweeen">
+      <span class="vertical-center-row flex-space-betweeen full-width"
+        ><p class="midHeadText2">Change Password</p>
+        <p class="midHeadText2 hideOverlay"  style="cursor: pointer">
+          <i class="fa fa-window-close"></i></p
+      ></span>
+      <p class="errorClass"></p>
+      <p style="color: #aaa">  </p>
+      <div class="">
+        <p class="errorField" errorField="old"></p>
+        <input type="password" placeholder="Enter Old Password" class="form-control" id="old" >
+        <p class="errorField" errorField="newP"></p>
+        <input type="password" placeholder="Enter New Password" class="form-control" id="newP" >
+        <p class="errorField" errorField="confirm"></p>
+        <input type="password" placeholder="Confirm New Password" class="form-control" id="confirm" >
+      </div>
+      <button id="submitChangePassword" class="sorth-btn White-backgrnd" >
+        Make Changes
+      </button>
+    </div>
+  </section>
+
+
+
+
+
   <div>
+    <div id="myNav" class="overlay_loader">
+  
+      <div class="overlay_loader_content">
+        <img class="loader" src="/images/display_img/loader.gif" alt="">
+      </div>
+    </div>
+    
+    <div id="" class="overlay_success">
+  
+      <div class="overlay_success_content text-center">
+        <i class="fa fa-smile-o success" style="font-size:36px; margin-bottom: 10px; color: #43ee7c"></i>
+        <p>Update Successful</p>
+        <button id="successReload" style="width: 50px; background-color: #bbb" class="btn">Ok</button>
+      </div>
+    </div>
+
+
+    <!-- --------------------------------upload images----------------- -->
+    <div id="" class="overlay_upload_images">
+  
+      <div class="overlay_upload_content">
+        <p style="position: absolute; right: 0; top: 0" class="midHeadText2 hideOverlay"  style="cursor: pointer">
+          <i class="fa fa-window-close"></i>
+        </p>
+        <div class="uploadFlexContainer">
+            <p class="errorField" errorField="">Upload and Image and Select Image type</p>
+            <select class="form-control typeOfFile">
+              <option value="">Select Type of file</option>
+              <!-- <option value="profile">Profile Picture</option> -->
+              <option value="baptismal">Baptismal Certificate</option>
+              <option value="worker">Workers-In-Training Certificate</option>
+              <option value="sod">School of Disciple</option>
+              <option value="college">Bible College</option>
+            </select>
+            <div class="drop-zone">
+              <span class="drop-zone__prompt">Drop file here or click to upload</span>
+              <!-- <div class="drop-zone__thumb" data-label="file.txt "></div> -->
+              <input type="file" name="" class="drop-zone__input" id="profilePicture">
+            </div>
+            <button style="margin-top: 10px" id="submitUpload" class="btn-primary form-control">Upload</button>
+          
+        </div>
+      </div>
+    </div>
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Overlay -->
+    <section id="editOverlay" class="modal_ horizontal-center-column">
+      <div style=" padding-top: 10px"
+        class="modal_content_2 horizontal-center-column flex-space-betweeen">
+        <span class="vertical-center-row flex-space-betweeen full-width"
+          ><p class="midHeadText2">Edit Profile</p>
+          <p class="midHeadText2 hideOverlay"  style="cursor: pointer">
+            <i class="fa fa-window-close"></i></p
+        ></span>
+        <p class="errorClass"></p>
+        <p style="color: #aaa">Edit Your <span valueToEdit></span> </p>
+        <div class="inputDiv">
+
+        </div>
+        <button id="submit" class="sorth-btn White-backgrnd" >
+          Make Changes
+        </button>
+      </div>
+    </section>
     <p style="visibility: hidden;" class="hiddenP"><%=x ? x.id : ''%></p>
     <h3 id='profileName' style="padding-top: 20px;" class="text-center">
     </h3>

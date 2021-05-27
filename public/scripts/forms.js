@@ -38,6 +38,7 @@ $(document).ready(function(){
   })
   $("#submitBtn").on("click", function(e){
     e.preventDefault();
+    console.log(state);
     let valid = true;
     
     if(avatar == ""){
@@ -143,13 +144,13 @@ $(document).ready(function(){
         });
     }
     if(valid){
-      $(".overlay_loader").css("width", "100%");
+      $(".overlay_loader").css("display", "block");
       const fd = new FormData();
       fd.append('name', state.name);
       fd.append('address', state.address);
       fd.append('email', state.email);
       fd.append('password', state.password);
-      fd.append('number', state.number);
+      fd.append('number', state.phone);
       fd.append('dob', state.dob);
       fd.append('gender', state.gender);
       fd.append('marital_status', state.marital_status);
@@ -183,10 +184,10 @@ $(document).ready(function(){
       })
       .then(res => {
         if(res.success == 1){
-          $(".overlay_loader").css("width", "0%");
+          $(".overlay_loader").css("display", "none");
           $(".overlay_success").css("width", "100%");
         }else{
-          $(".overlay_loader").css("width", "0%");
+          $(".overlay_loader").css("display", "none");
           alert("Your email address might have been used for registration before")
         }
       })
@@ -563,9 +564,6 @@ function validateForm() {
                     	$(this).css("display", "none");
                     }
                 });
-                console.log(trainings);
-                valid = true;
-                console.log(valid);
             }
             break;
           case "department":

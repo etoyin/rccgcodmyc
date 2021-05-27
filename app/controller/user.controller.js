@@ -13,6 +13,8 @@ const {
   getUsers,
   getUserById,
   updateUser,
+  updatePassword,
+  updateImage,
   deleteUser,
   getUserByEmail,
   getAdminEmail,
@@ -98,20 +100,43 @@ module.exports = {
       data: ''
     });
   },
+  updateImage: async(req, res) => {
+    const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
+    let url = '';
+    const {path} = req.file;
+    const newPath = await uploader(path);
+    url = newPath.url;
+    fs.unlinkSync(path);
+
+    updateImage(req, url, (error, results) => {
+      if(error){
+        console.log(error);
+        return res.status(500).json({
+          success: 0,
+          message: "Database connection error"
+        });
+      }
+      console.log(results);
+      return res.status(200).json({
+        success: 1,
+        data: results,
+        message: "Image added successfully"
+      });
+    });
+    
+  },
   createUser: async (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
     body.password = hashSync(body.password, salt);
+    console.log(req.file);
     const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
-    const urls = [];
-    const files = req.files;
-    for(const file of files){
-      const {path} = file;
-      const newPath = await uploader(path);
-      urls.push(newPath.url);
-      fs.unlinkSync(path);
-    }
-    let url = urls.join(", ");
+    let url = "";
+
+    const {path} = req.file;
+    const newPath = await uploader(path);
+    url = newPath.url;
+    fs.unlinkSync(path);
     
     create(req, url, (error, results) => {
       if(error){
@@ -272,22 +297,9 @@ module.exports = {
       });
     });
   },
-  updateUser: async (req, res) => {
+  updatePassword: (req, res) => {
     const body = req.body;
-    const salt = genSaltSync(10);
-    body.password = hashSync(body.password, salt);
-    console.log(req.body);
-    const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
-    const urls = [];
-    const files = req.files;
-    for(const file of files){
-      const {path} = file;
-      const newPath = await uploader(path);
-      urls.push(newPath.url);
-      fs.unlinkSync(path);
-    }
-    let url = urls.join(", ");
-    updateUser(body, url, (error, results) => {
+    getUserByEmail(body.email, (error, results) => {
       if(error){
         console.log(error);
         return res.json({
@@ -298,35 +310,55 @@ module.exports = {
       if(!results){
         return res.json({
           success: 0,
+          message: "Invalid email or password"
+        });
+      }
+      const passwordCorrect = compareSync(body.oldPassword, results.password);
+      
+      if(passwordCorrect){
+        updatePassword(body, (error, results) => {
+          if(error){
+            console.log(eror);
+          }
+          return res.json({
+            success: true,
+            message: "Password Changed successfully",
+            genMessage: "",
+            data: results
+          });
+        });
+      }else{
+        return res.json({
+          success: false,
+          message: "invalid Old Password"
+        });
+      }
+    })
+  },
+  updateUser: (req, res) => {
+    const body = req.body;
+    updateUser(body, (error, results) => {
+      if(error){
+        console.log(error);
+        return res.json({
+          success: false,
+          message: error
+        });
+      }
+      if(!results){
+        return res.json({
+          success: false,
           message: "Failed to Update user"
         });
         
       }
+      return res.json({
+        success: true,
+        message: "Update Succesful",
+        data: results
+      })
       //dataUpdate.message = 'Updated successfully!';
     });
-    getUserByEmail(body.email, (error, results) => {
-      if(error){
-        console.log(error);
-      }
-      if(!results){
-        return res.json({
-          success: 0,
-          message: "Invalid email or password"
-        });
-      }
-        
-      results.password = undefined;
-      const token = sign({ result: results}, process.env.JWT_KEY, {
-        expiresIn: "100h"
-      });
-      return res.json({
-        success: 1,
-        message: "updated successfully",
-        genMessage: "LoggedIn",
-        token: token,
-        data: results
-      });
-    })
   },
   deleteUser: (req, res) => {
     const body = req.body;

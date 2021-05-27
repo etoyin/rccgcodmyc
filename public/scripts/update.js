@@ -335,7 +335,7 @@ $(document).ready(function(){
       console.log(formValidate);
       console.log(validateRccgYear);
   
-      if(formValidate){
+      if(true){
         const fd = new FormData();
         fd.append('name', state.u_name);
         fd.append('address', state.u_address);

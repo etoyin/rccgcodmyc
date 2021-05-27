@@ -18,6 +18,8 @@ const {
   renderProfile,
   getFormsForUpdate,
   updateUser,
+  updateImage,
+  updatePassword
   /*deleteUser,
   login*/
  } = require("../controller/user.controller");
@@ -26,7 +28,7 @@ const { checkToken } = require("../auth/token_validation");
 
 
 router.get("/", getHomePage);
-router.post("/register", upload.array('image'), createUser);
+router.post("/register", upload.single('image'), createUser);
 router.get("/register", getForms);
 router.get("/pastors", getPastors);
 router.get("/departments", getEachDepartment);
@@ -41,7 +43,9 @@ router.post("/logout", logout);
 router.get("/profile/:id", renderProfile);
 router.post("/profile/:id",checkToken, getUserById);
 router.get("/dashboard", getDashboard);
-router.patch("/update", checkToken, upload.array('image'), updateUser);
+router.patch("/update", checkToken, upload.none(), updateUser);
+router.patch("/updateImage", checkToken, upload.single("file"), updateImage);
+router.patch("/updatePassword", checkToken, updatePassword);
 //router.delete("/delete", checkToken, deleteUser);
 //router.post("/login", login);
 
