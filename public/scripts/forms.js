@@ -5,10 +5,11 @@ let departments = [ "Technical",
                     "Security",
                     "Protocol",
                     "Ushering",
+                    "Information Bureau",
                     "Media",
                     "Prayer",
                     "Sign Language",
-                    "Teen/Children",
+                    "Teen and Children",
                     "Welfare"
                   ];
 
