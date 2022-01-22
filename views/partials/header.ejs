@@ -33,7 +33,8 @@
   <script src="/scripts/adminLogin.js"></script>  
   <script src="/scripts/jquery.table2excel.js"></script>  
   <script src="/scripts/loader.js"></script>  
-  <script src="/scripts/update.js"></script>  
+  <script src="/scripts/update.js"></script>
+  <script src="/scripts/status.js"></script>  
   <script src="/vegas/vegas.min.js"></script>
   <script>
     $(document).ready(function(){
@@ -66,7 +67,7 @@
     <div style="margin-top: 10px" class='text-center'>
       <image width='100px' height='100px' src='/images/display_img/logo.jpg'/>
     </div>
-    <div style="width: 70%; margin-top: 10px; margin: 10px auto 10px auto; height: 3px; background-color: #888"></div>
+  
     <nav id="myNavbar" class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/"><h4>CODMYC</h4></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,13 +82,13 @@
             
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/all-workers">All Workers</a>
+            <a class="nav-link" id="all-workers" href="/all-workers">All Workers</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Departments
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu  deps" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/pastors">The Pastorate</a>
               <a class="dropdown-item" href="/departments?department=choir">Choir</a>
               <a class="dropdown-item" href="/departments?department=media">Media</a>

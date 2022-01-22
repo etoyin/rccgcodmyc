@@ -14,6 +14,8 @@ $(document).ready(() => {
     $('.dashboard').append(`<a class="nav-link dashboard" href="/dashboard">Dashboard</a>`);
     if(!adminLocalStorage.admin){
       $('.profilePage').append(`<a class="nav-link profilePage" href="/profile/${adminLocalStorage.data.id}">Profile</a>`);
+    }else{
+      $('.profilePage').append(`<a class="nav-link profilePage" href="/non-active">Non Active/Transfered Workers</a>`);
     }
     $('.auth').append(`<a class="nav-link logout" >Logout</a>`);
   }

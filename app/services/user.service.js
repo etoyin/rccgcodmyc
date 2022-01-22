@@ -290,6 +290,25 @@ module.exports = {
         }
     )
   },
+  statusUpdate: (data, callback) => {
+    const {
+      status,
+      id
+    } = data;
+    pool.query(
+    `update user set
+      status=?
+      where id=?
+        `,
+        [status, id],
+        (error, results, field) => {
+          if(error){
+            return callback(error);
+          }
+          return callback(null, results)
+        }
+    )
+  },
   updatePassword: (data, callback) => {
     const {
       newP,

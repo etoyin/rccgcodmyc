@@ -22,9 +22,9 @@
       <%})%>
     </div>
 
-    <div class="flex-container">
+    <div class="memberWithHiddenInput flex-container">
       <% data.filter((data) => {
-        return data.name.search(/abioye/i) < 0 
+        return data.name.search(/abioye/i) < 0;
       }).forEach((x, i) => {%>
         <div>
           <a href='/profile/<%=x.id%>'>
@@ -32,6 +32,10 @@
             <h5><%= (x.gender === 'male' ? 'Pastor. '+ x.name : 'Pastor(Mrs). '+ x.name)%></h5>
             <h6> Pastorate </h6>
           </a>
+          <div class="status-switch" style="display: none">
+            <input type="checkbox" data-id="<%=x.id%>" <%= (x.status==0)? "checked" : ""%> hidden="hidden" id="user<%=x.id%>">
+            <label class="switch" for="user<%=x.id%>"></label>
+          </div>
         </div>
       <%})%>
     </div>

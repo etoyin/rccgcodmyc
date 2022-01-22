@@ -1,7 +1,7 @@
 <%- include ('partials/header.ejs'); %>
   <% if(data.length > 0){ %>
     <div>
-      <h2 style="margin-top: 20px;" id='department_header' class="text-center"></h2>
+      <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
       <!--h3 class="text-center">The PICP</h3>
         
       <div class="flex-container">
@@ -39,10 +39,10 @@
         <%})%>
       </div-->
 
-      <h2 class="text-center">The Ministers</h2>
+      <h4 class="text-center">The Ministers</h4>
       <div class="memberWithHiddenInput flex-container">
         <% data.filter((data) => {
-          return data.position == 'Minister' && data.status == 1; 
+          return (data.position == 'Minister' || data.position == 'Pastorate') && data.status == 0; 
         }).forEach((x, i) => {%>
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
@@ -61,12 +61,12 @@
         <%})%>
       </div>
 
-      <h2 style="margin-top: 40px;" class="text-center">The Heads of Departments</h2>
+      <h4 class="text-center">The Heads of Departments</h4>
       <div class="memberWithHiddenInput flex-container">
         <%  const getLocalStorage = JSON.parse(localStorage.getItem('user-data')); 
-        
+     
           data.filter((data) => {
-          return data.position == 'HOD' && data.status == 1; 
+          return data.position == 'HOD' && data.status == 0; 
         }).forEach((x, i) => {%>
           <div class="aCard">
             <a class="eachMember" href='/profile/<%=x.id%>'>
@@ -84,10 +84,10 @@
         <%})%>
       </div>
 
-      <h3 style="margin-top: 10px;" class="text-center">The Workers</h3>
+      <h5 class="text-center">The Workers</h5>
       <div class="memberWithHiddenInput flex-container">
         <% data.filter((data) => {
-          return data.position == 'Worker' && data.status == 1; 
+          return data.position == 'Worker' && data.status == 0; 
         }).forEach((x, i) => {%>
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>

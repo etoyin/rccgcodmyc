@@ -5,7 +5,7 @@
       <h2 style="padding-top: 20px;" id='department_header' class="text-center">THE <%=department.toUpperCase()%> DEPARTMENT</h2>
       <div class="flex-container">
         <% data.filter((data) => {
-          return data.hodDepartment.toUpperCase() == department.toUpperCase(); 
+          return data.hodDepartment.toUpperCase() == department.toUpperCase() && data.status == 1; 
         }).forEach((x, i) => {%>
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
@@ -15,15 +15,20 @@
               </h5>
               <h6 id='hod_caption'>HOD, <%=department.toUpperCase()%></h6>
             </a>
+
+            <div class="status-switch" style="display: none">
+              <input type="checkbox" data-id="<%=x.id%>" <%= (x.status==0)? "checked" : ""%> hidden="hidden" id="user<%=x.id%>">
+              <label class="switch" for="user<%=x.id%>"></label>
+            </div>
           </div>
         <%})%>
       </div>
 
-      <div class="flex-container">
+      <div class="memberWithHiddenInput flex-container">
         <% data.filter((data) => {
-          return data.hodDepartment.toUpperCase() != department.toUpperCase();
+          return data.hodDepartment.toUpperCase() != department.toUpperCase()  && data.status == 1;
         }).forEach((x, i) => {%>
-          <div>
+          <div >
             <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="pastor_img rounded-circle" />
               <h5>
@@ -34,6 +39,10 @@
                 %>
               </h5>
             </a>
+            <div class="status-switch" style="display: none">
+              <input type="checkbox" data-id="<%=x.id%>" <%= (x.status==0)? "checked" : ""%> hidden="hidden" id="user<%=x.id%>">
+              <label class="switch" for="user<%=x.id%>"></label>
+            </div>            
           </div>
         <%})%>
       </div>

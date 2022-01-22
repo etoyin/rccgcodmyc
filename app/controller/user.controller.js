@@ -15,6 +15,7 @@ const {
   updateUser,
   updatePassword,
   updateImage,
+  statusUpdate,
   deleteUser,
   getAllWithDepartments,
   getUserByEmail,
@@ -42,6 +43,28 @@ module.exports = {
       //results[0].password = undefined;
       res.render('allWorkers.ejs', {
         title: 'All Workers in COD',
+        data: results,
+        message: 'Good'
+      });
+    })
+  },
+  getNonActiveAll: (req, res) => {
+    getUsers((error, results) => {
+      if(error){
+        console.log(error);
+      }
+
+      if(!results){
+        message = 'No record found';
+        res.render('non-active.ejs', {
+          title: 'Non Active or Transfered Workers',
+          message: message,
+          data: results
+        });
+      }
+      //results[0].password = undefined;
+      res.render('non-active.ejs', {
+        title: 'Non Active or Transfered Workers',
         data: results,
         message: 'Good'
       });
@@ -140,7 +163,6 @@ module.exports = {
           message: "Database connection error"
         });
       }
-      console.log(results);
       return res.status(200).json({
         success: 1,
         data: results,
@@ -153,7 +175,7 @@ module.exports = {
     const body = req.body;
     const salt = genSaltSync(10);
     body.password = hashSync(body.password, salt);
-    console.log(req.file);
+    
     const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
     let url = "";
 
@@ -266,6 +288,7 @@ module.exports = {
         });
       }
 
+      //console.log(data);
       res.render('departments.ejs', {
         title: department.toUpperCase() + 'department',
         data,
@@ -364,7 +387,34 @@ module.exports = {
   },
   updateUser: (req, res) => {
     const body = req.body;
+    // console.log(body)
     updateUser(body, (error, results) => {
+      if(error){
+        console.log(error);
+        return res.json({
+          success: false,
+          message: error
+        });
+      }
+      if(!results){
+        return res.json({
+          success: false,
+          message: "Failed to Update user"
+        });
+        
+      }
+      return res.json({
+        success: true,
+        message: "Update Succesful",
+        data: results
+      })
+      //dataUpdate.message = 'Updated successfully!';
+    });
+  },
+  statusUpdate: (req, res) => {
+    const body = req.body;
+    // console.log(body)
+    statusUpdate(body, (error, results) => {
       if(error){
         console.log(error);
         return res.json({

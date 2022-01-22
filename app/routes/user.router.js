@@ -14,13 +14,15 @@ const {
   logout,
   createAdmin,
   getAll,
+  getNonActiveAll,
   getAllWithDepartments,
   getDashboard,
   renderProfile,
   getFormsForUpdate,
   updateUser,
   updateImage,
-  updatePassword
+  updatePassword,
+  statusUpdate
   /*deleteUser,
   login*/
  } = require("../controller/user.controller");
@@ -34,6 +36,7 @@ router.get("/register", getForms);
 router.get("/pastors", getPastors);
 router.get("/departments", getEachDepartment);
 router.get("/all-workers", getAll);
+router.get("/non-active", getNonActiveAll);
 router.get("/all-workersWithDepartments", getAllWithDepartments);
 router.get("/update", getFormsForUpdate);
 router.post("/createAdmin", createAdmin);
@@ -45,6 +48,7 @@ router.post("/logout", logout);
 router.get("/profile/:id", renderProfile);
 router.post("/profile/:id",checkToken, getUserById);
 router.get("/dashboard", getDashboard);
+router.patch("/status", checkToken, upload.none(), statusUpdate);
 router.patch("/update", checkToken, upload.none(), updateUser);
 router.patch("/updateImage", checkToken, upload.single("file"), updateImage);
 router.patch("/updatePassword", checkToken, upload.none(), updatePassword);
