@@ -54,9 +54,10 @@ module.exports = {
           training,
           ordination,
           position,
-          hodDepartment
+          hodDepartment,
+          status
         )
-        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
         [
           captilize(name),
           address, 
@@ -77,7 +78,8 @@ module.exports = {
           training,
           ordination,
           position,
-          hodDepartment
+          hodDepartment,
+          1
         ],
         (error, results, fields) => {
           if(error){
