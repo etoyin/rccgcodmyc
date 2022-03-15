@@ -166,8 +166,9 @@ module.exports = {
       select
         name, departments
         from user
+        where status=?
       `,
-        [],
+        [1],
         (error, results, field) => {
           if(error){
             return callback(error);
