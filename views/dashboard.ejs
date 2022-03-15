@@ -6,16 +6,16 @@
       <h4 class="text-center">Welcome</h4>
       <div class="flex-container-2">
         <% let pastorate = data.filter((data) => {
-          return data.position == 'Pastorate'; 
+          return data.position == 'Pastorate'  && data.status == 1; 
         }).length;
             let ministers = data.filter((data) => {
-          return data.position == 'Minister'; 
+          return data.position == 'Minister'  && data.status == 1; 
         }).length;
             let hod = data.filter((data) => {
-          return data.position == 'HOD'; 
+          return data.position == 'HOD'  && data.status == 1; 
         }).length;
             let worker = data.filter((data) => {
-          return data.position == 'Worker'; 
+          return data.position == 'Worker'  && data.status == 1; 
         }).length;
         
         %>

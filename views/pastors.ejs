@@ -24,7 +24,7 @@
 
     <div class="memberWithHiddenInput flex-container">
       <% data.filter((data) => {
-        return data.name.search(/abioye/i) < 0;
+        return data.name.search(/abioye/i) < 0  && data.status == 1;
       }).forEach((x, i) => {%>
         <div>
           <a href='/profile/<%=x.id%>'>

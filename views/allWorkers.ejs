@@ -47,10 +47,12 @@
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="picp_img" />
-              <h5>
-                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              <h5 style="font-weight: bold;">
+                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%>
               </h5>
-              <h6 id='hod_caption'></h6>
+              <h6 id='hod_caption'>
+                <%=(x.departments.split(",").join(", "))%>
+              </h6>
             </a>
 
             <div class="status-switch" style="display: none">
@@ -71,10 +73,12 @@
           <div class="aCard">
             <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="picp_img" />
-              <h5>
-                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%></h5>
+              <h5 style="font-weight: bold;">
+                <%= (x.gender === 'male' ? 'Bro. '+ x.name : 'Sis. '+ x.name)%>
               </h5>
-              <h6 id='hod_caption'></h6>
+              <h6 id='hod_caption'>
+                <%=(x.departments.split(",").join(", "))%>
+              </h6>
             </a>
             <div class="status-switch" style="display: none">
               <input type="checkbox" data-id="<%=x.id%>" <%= (x.status==0)? "checked" : ""%> hidden="hidden" id="user<%=x.id%>">
@@ -92,13 +96,16 @@
           <div>
             <a class="eachMember" href='/profile/<%=x.id%>'>
               <img src='<%=x.image_name.split(",")[0]%>' class="pastor_img" />
-              <h5>
+              <h5 style="font-weight: bold;">
                 <%= 
                   (x.gender === 'male' ? 
                   ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
                   ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
                 %>
               </h5>
+              <h6 id='hod_caption'>
+                <%=(x.departments.split(",").join(", "))%>
+              </h6>
             </a>
 
             <div class="status-switch" style="display: none">
