@@ -112,6 +112,14 @@
               </label>
             </div>
           </div>
+          <div class="active_training" id="">
+            <label class="label">Are Currently undergoing training?</label>
+            <select type="text" class="input" id="active_training">
+              <option value="">Select a training</option>
+              <option value="Baptismal Class">Baptismal Class</option>
+              <option value="Workers-in-training">Workers-in-training</option>
+            </select>
+          </div>
         </p>
       </div>
       <div class="tab"><h5 style="margin-top: 20px;">Step 3:</h5>
@@ -260,6 +268,7 @@
           <p class="errorField" errorField="position">Position not selected or The department you selected as HOD is not part of the department you selected previously</p>
           <select id="position" errorField="position" type="text" class="input position required">
             <option value="">Current Position in Church</option>
+            <option value="Training">Undergoing Training</option>
             <option value="Worker">Worker</option>
             <option value="HOD">HOD</option>
             <option value="Minister">Minister</option>

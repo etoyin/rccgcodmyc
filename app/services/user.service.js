@@ -25,6 +25,7 @@ module.exports = {
       year_joined_rccg,
       other_comments,
       training,
+      active_training,
       departments,
       ordination,
       position,
@@ -52,12 +53,13 @@ module.exports = {
           image_name,
           departments,
           training,
+          active_training,
           ordination,
           position,
           hodDepartment,
           status
         )
-        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+        values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
         [
           captilize(name),
           address, 
@@ -76,6 +78,7 @@ module.exports = {
           newPath,
           departments,
           training,
+          active_training,
           ordination,
           position,
           hodDepartment,

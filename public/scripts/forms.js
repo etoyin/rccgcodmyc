@@ -159,6 +159,7 @@ $(document).ready(function(){
       fd.append('ordination', state.ordination);
       fd.append('water_baptism', state.water_baptism);
       fd.append('training', state.training);
+      fd.append('active_training', state.active_training);
       fd.append('position', state.position);
       fd.append('hodDepartment', state.hodDepartment);
       fd.append('departments', state.department);
@@ -256,6 +257,7 @@ $(document).ready(function(){
   let pswd = "";
   let departments;
   let trainings;
+  state.active_training = $("#active_training").val();
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 

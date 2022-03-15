@@ -115,6 +115,35 @@
           </div>
         <%})%>
       </div>
+      <br/>
+
+      <h3 style="margin-top: 10px;" class="text-center">Training Class</h3>
+      <div class="memberWithHiddenInput flex-container">
+        <% data.filter((data) => {
+          return data.position == 'Training' && data.status == 1; 
+        }).forEach((x, i) => {%>
+          <div>
+            <a class="eachMember" href='/profile/<%=x.id%>'>
+              <img src='<%=x.image_name.split(",")[0]%>' class="pastor_img" />
+              <h5 style="font-weight: bold;">
+                <%= 
+                  (x.gender === 'male' ? 
+                  ( x.position == 'Pastorate' ? 'Pastor '+ x.name  : 'Bro. '+ x.name  ) : 
+                  ( x.position == 'Pastorate' ? 'Pastor(Mrs) '+ x.name : 'Sis. '+ x.name))
+                %>
+              </h5>
+              <h6 id='hod_caption'>
+                <%=(x.active_training)%>
+              </h6>
+            </a>
+
+            <div class="status-switch" style="display: none">
+              <input type="checkbox" data-id="<%=x.id%>" <%= (x.status==0)? "checked" : ""%> hidden="hidden" id="user<%=x.id%>">
+              <label class="switch" for="user<%=x.id%>"></label>
+            </div>
+          </div>
+        <%})%>
+      </div>
     </div>
   <%} else {%>
     <h2 style="padding-top: 20px;" id='department_header' class="text-center"></h2>
