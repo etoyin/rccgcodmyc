@@ -22,12 +22,18 @@ const {
   updateUser,
   updateImage,
   updatePassword,
-  statusUpdate
+  statusUpdate,
+  getPaymentForm,
+  verifyPayment
   /*deleteUser,
   login*/
  } = require("../controller/user.controller");
 const router = require("express").Router();
 const { checkToken } = require("../auth/token_validation");
+
+
+router.get("/payment", getPaymentForm);
+router.post("/verifyPayment", verifyPayment);
 
 
 router.get("/", getHomePage);

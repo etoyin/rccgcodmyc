@@ -26,6 +26,55 @@ const {
 //const { sign } = require("jsonwebtoken");
 
 module.exports = {
+  verifyPayment: (req, res) => {
+    const https = require('https');
+    console.log(req.query.ref);
+
+    // const options = {
+    //   hostname: 'api.paystack.co',
+    //   port: 443,
+    //   path: `/transaction/verify/${req.query.ref}`,
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: 'Bearer sk_test_daae4ae009a4e566eacd46aa1dd6ca3e1092962b'
+    //   }
+    // }
+    // let data = '';
+    
+    // https.request(options, res => {
+    //   res.on('data', (chunk) => {
+    //     data += chunk
+    //   });
+
+    //   res.on('end', () => {
+    //     console.log(JSON.parse(data))
+    //   })
+    // }).on('error', error => {
+    //   console.error(error)
+    // })
+
+    fetch(`https://api.paystack.co/transaction/verify/${req.query.ref}`,{
+      headers: {
+        Authorization: 'Bearer sk_test_daae4ae009a4e566eacd46aa1dd6ca3e1092962b'
+      },
+      port: 443,
+    })
+    .then(res => res.json())
+    .then(response => {
+      return res.json({
+        success: 1,
+        data: response
+      })
+    })
+  },
+  getPaymentForm: (req, res) => {
+    let message = '';
+    res.render('payment.ejs', {
+      title: 'RCCGCODMYC | Offering & Tithes Payment',
+      message: message,
+      data: ''
+    });
+  },
   getAll: (req, res) => {
     getUsers((error, results) => {
       if(error){
