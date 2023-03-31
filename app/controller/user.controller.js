@@ -3,10 +3,10 @@ const cloudinary = require('../cloudinary');
 const { genSaltSync, hashSync, compareSync } = require("bcrypt")
 const { sign } = require("jsonwebtoken");
 //const { checkToken } = require("../auth/token_validation");
-if (typeof localStorage === "undefined" || localStorage === null) {
-  var LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
-}
+// if (typeof localStorage === "undefined" || localStorage === null) {
+//   var LocalStorage = require('node-localstorage').LocalStorage;
+//   localStorage = new LocalStorage('../scratch');
+// }
 let dataUpdate = {};
 const { 
   create,
