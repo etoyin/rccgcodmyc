@@ -4,7 +4,7 @@
   "description": "A site for COD members info",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "node server.js"
   },
   "keywords": [
     "speech",
