@@ -65,7 +65,8 @@
 
       <h2 style="margin-top: 40px;" class="text-center">The Heads of Departments</h2>
       <div class="memberWithHiddenInput flex-container">
-        <%  const getLocalStorage = JSON.parse(localStorage.getItem('user-data')); 
+        <%  
+          <!-- const getLocalStorage = JSON.parse(localStorage.getItem('user-data'));  -->
         
           data.filter((data) => {
           return data.position == 'HOD' && data.status == 1; 
