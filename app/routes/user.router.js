@@ -56,7 +56,7 @@ router.post("/profile/:id",checkToken, getUserById);
 router.get("/dashboard", getDashboard);
 router.patch("/status", checkToken, upload.none(), statusUpdate);
 router.patch("/update", checkToken, upload.none(), updateUser);
-router.patch("/updateImage", checkToken, upload.single("file"), updateImage);
+router.patch("/updateImage", checkToken, upload.single("/tmp/file"), updateImage);
 router.patch("/updatePassword", checkToken, upload.none(), updatePassword);
 //router.delete("/delete", checkToken, deleteUser);
 //router.post("/login", login);
