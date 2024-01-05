@@ -2,8 +2,8 @@ $(document).ready(function(){
     let fileInput;
     let userDetails;
     $("#submitUpload").click(function(){
-        $(".overlay_loader").css("display", "block");
-        
+        // $(".overlay_loader").css("display", "block");
+        console.log(userDetails);
         const typeOfFile = $(".typeOfFile").val();
         const getLocalStorage = JSON.parse(localStorage.getItem('user-data'));
         const token = getLocalStorage ? getLocalStorage.token : '';
@@ -15,7 +15,7 @@ $(document).ready(function(){
             formData.append("id", userDetails.id);
             formData.append("file", fileInput[0]);
             fetch("/updateImage", {
-                method: "PATCH",
+                method: "POST",
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },
@@ -34,7 +34,6 @@ $(document).ready(function(){
     /////Delegated event//////
     $(document.body).on('click', '#uploadImages' ,function(){
         userDetails = JSON.parse(localStorage.getItem("userDetails"));
-        console.log("kkkkkkkkkkk");
          $(".overlay_upload_images").css("display", "block");
     });
     document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {

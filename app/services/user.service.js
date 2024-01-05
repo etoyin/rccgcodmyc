@@ -96,6 +96,7 @@ module.exports = {
   },
   updateImage: (req, newPath, callback) => {
     const {name, type, id} = req.body;
+    console.log(newPath);
     let typeOfCert;
     switch (type) {
       case "baptismal":

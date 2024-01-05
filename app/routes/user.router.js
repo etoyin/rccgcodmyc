@@ -1,11 +1,14 @@
 //const {getHomePage} = require('./index')
-const upload = require('../multer');
-
-
-
-
-
-
+const multer = require('multer');
+// const storage = multer.memoryStorage();
+// const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require('../cloudinary');
+const storage = multer.diskStorage({
+  filename: function(req,file,cb){
+    cb(null, file.originalname)
+  }
+});
+const upload = multer({ storage: storage });
 
 const { 
   createUser,
@@ -59,11 +62,11 @@ router.post("/login", login);
 router.post("/admin_login", adminLogin);
 router.post("/logout", logout);
 router.get("/profile/:id", renderProfile);
-router.post("/profile/:id",checkToken, getUserById);
+router.post("/profile/:id", checkToken, getUserById);
 router.get("/dashboard", getDashboard);
 router.patch("/status", checkToken, upload.none(), statusUpdate);
 router.patch("/update", checkToken, upload.none(), updateUser);
-router.patch("/updateImage", checkToken, upload.single("file"), updateImage);
+router.post("/updateImage", checkToken, upload.single("file"), updateImage);
 router.patch("/updatePassword", checkToken, upload.none(), updatePassword);
 //router.delete("/delete", checkToken, deleteUser);
 //router.post("/login", login);

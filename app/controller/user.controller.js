@@ -196,57 +196,72 @@ module.exports = {
       data: ''
     });
   },
-  updateImage: async(req, res) => {
-    const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
-    let url = '';
+  updateImage: async(req, res, next) => {
     const {path} = req.file;
-    const newPath = await uploader(path);
-    url = newPath.url;
-    fs.unlinkSync(path);
-
-    updateImage(req, url, (error, results) => {
-      if(error){
-        console.log(error);
-        return res.status(500).json({
-          success: 0,
-          message: "Database connection error"
-        });
+    let url = '';
+    cloudinary.uploader.upload(path, function(err, result){
+      if(err){
+        console.log(err);
       }
-      return res.status(200).json({
-        success: 1,
-        data: results,
-        message: "Image added successfully"
+      // console.log(result);
+      url = result.secure_url;
+    })
+    .then(() => {
+      fs.unlinkSync(path);
+      updateImage(req, url, (error, results) => {
+        if(error){
+          console.log(error);
+          return res.status(500).json({
+            success: 0,
+            message: "Database connection error"
+          });
+        }
+        return res.status(200).json({
+          success: 1,
+          data: results,
+          message: "Image added successfully"
+        });
       });
-    });
+
+    })
+    // console.log(url);
+
+    
     
   },
   createUser: async (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
-    body.password = hashSync(body.password, salt);
-    
-    const uploader = async (path) => await cloudinary.uploads(path, req.body.name);
     let url = "";
-
+    body.password = hashSync(body.password, salt);
     const {path} = req.file;
-    const newPath = await uploader(path);
-    url = newPath.url;
-    fs.unlinkSync(path);
-    
-    create(req, url, (error, results) => {
-      if(error){
-        console.log(error);
-        return res.status(500).json({
-          success: 0,
-          message: "Database connection error"
-        });
+    cloudinary.uploader.upload(path, function(err, result){
+      if(err){
+        console.log(err);
       }
-      return res.status(200).json({
-        success: 1,
-        data: results,
-        message: "Registration Successful"
+      // console.log(result);
+      url = result.secure_url;
+    })
+    .then(()=>{
+
+      fs.unlinkSync(path);
+      
+      create(req, url, (error, results) => {
+        if(error){
+          console.log(error);
+          return res.status(500).json({
+            success: 0,
+            message: "Database connection error"
+          });
+        }
+        return res.status(200).json({
+          success: 1,
+          data: results,
+          message: "Registration Successful"
+        });
       });
-    });
+
+    })
     
   },
   createAdmin: (req, res) => {
