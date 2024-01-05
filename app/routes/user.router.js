@@ -1,6 +1,5 @@
 //const {getHomePage} = require('./index')
 const upload = require('../multer');
-const storage = upload.memoryStorage();
 const { 
   createUser,
   getUserById,
